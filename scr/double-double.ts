@@ -19,8 +19,8 @@ export class DoubleDouble {
 
 	static twoSum(a: number, b: number): [number, number] {
 		const x = a + b;
-		let tmp: number = 0;
-		let y: number = 0;
+		let tmp: number;
+		let y: number;
 
 		if (Math.abs(a) > Math.abs(b)) {
 			tmp = x - a;
@@ -76,9 +76,9 @@ export class DoubleDouble {
 
 	static twoProduct(a: number, b: number): [number, number] {
 		let x = a * b;
-		let y = 0;
-		let an = 0;
-		let bn = 0;
+		let y;
+		let an;
+		let bn;
 
 		if (Math.abs(a) > 2 ** 996) {
 			an = a * 2 ** -28;
