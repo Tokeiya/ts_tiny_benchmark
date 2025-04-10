@@ -1,5 +1,4 @@
 import { expect, test } from 'vitest';
-import { add } from '../scr/playground.js';
 import { DoubleDouble } from '../scr/double-double.js';
 
 test('from_bigint', () => {
