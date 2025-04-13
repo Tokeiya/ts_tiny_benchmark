@@ -61,8 +61,6 @@ export function ddtostring(
 
 	ex1 = get_exponent(absx1);
 
-	// add 1-byte margin to add buf2
-	//bool buf[1023 - (-1074) + 2];
 	let buf = Array(1023 - -1074 + 2).fill(0);
 	let offset = 1074;
 	let emax: number = 0,
@@ -115,7 +113,8 @@ export function ddtostring(
 				emin2 = ex2 - i;
 				break;
 			}
-			dtmp2 /= 2;
+			//dtmp2 /= 2;
+			dtmp2 = Math.floor(dtmp2 / 2);
 		}
 
 		if (sign == sign2) s = 1;
@@ -163,7 +162,6 @@ export function ddtostring(
 		emax = 0;
 	}
 
-	//std::list<int> result1, result2;
 	let result1: Dequeue<number> = new Dequeue();
 	let result2: Dequeue<number> = new Dequeue();
 
@@ -326,7 +324,8 @@ export function ddtostring(
 		// sprintf(stmp, "e%+03d", result_max);
 		// result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max <<
 		// std::noshowpos;
-		result_str.push('ALTERNATE');
+		result_str.push('e');
+		result_str.push(result_max.toString());
 	} else if (format == 'g') {
 		// delete zeros of head
 		while (result[offset2 + result_max] == 0) {
@@ -382,14 +381,12 @@ export function ddtostring(
 
 			// make result string
 			for (i = result_max; i >= result_min; i--) {
-				//if (i == result_max - 1) result_str << ".";
 				if (i == result_max - 1) result_str.push('.');
-				//result_str << result[offset2 + i];
 				result_str.push(result[offset2 + i]);
 			}
 			// sprintf(stmp, "e%+03d", result_max);
 			// result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) <<
-			// result_max << std::noshowpos;
+			//result_max << std::noshowpos;
 			result_str.push('ALTERNATE');
 		}
 	} else if (format == 'a') {
