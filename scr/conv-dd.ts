@@ -32,28 +32,28 @@ export function ddtostring(
 	precision: number = 34,
 	format: string = 'g',
 ): string[] {
-	int i, j;
-	int sign, sign2, ex1, ex2;
-	double absx1, absx2;
+	let i: number;
+	let sign: number, sign2: number, ex1: number, ex2: number;
+	let absx1: number, absx2: number;
 
-	if (x1 != x1 || x2 != x2) return "nan";
+	if (x1 != x1 || x2 != x2) return ['nan'];
 
 	sign = get_sign_double(x1);
-	absx1 = std::fabs(x1);
+	absx1 = Math.abs(x1);
 
-	if (absx1 == 0.) {
+	if (absx1 == 0) {
 		if (sign == -1) {
-			return "-0";
+			return ['-0'];
 		} else {
-			return "0";
+			return ['0'];
 		}
 	}
 
-	if (absx1 == std::numeric_limits<double>::infinity()) {
+	if (!Number.isFinite(absx1)) {
 		if (sign == -1) {
-			return "-inf";
+			return ['-inf'];
 		} else {
-			return "inf";
+			return ['inf'];
 		}
 	}
 
@@ -62,13 +62,15 @@ export function ddtostring(
 	ex1 = get_exponent(absx1);
 
 	// add 1-byte margin to add buf2
-	bool buf[1023 - (-1074) + 2];
-	int offset = 1074;
-	int emax, emin;
-	double dtmp, dtmp2;
+	//bool buf[1023 - (-1074) + 2];
+	let buf = Array(1023 - -1074 + 2).fill(0);
+	let offset = 1074;
+	let emax: number = 0,
+		emin: number = 0;
+	let dtmp: number, dtmp2: number;
 
 	dtmp = absx1;
-	dtmp2 = std::ldexp(1., ex1);
+	dtmp2 = ldexp(1, ex1);
 
 	for (i = 0; i <= 52; i++) {
 		if (dtmp >= dtmp2) {
@@ -82,22 +84,24 @@ export function ddtostring(
 			emin = ex1 - i;
 			break;
 		}
-		dtmp2 /= 2.;
+		dtmp2 /= 2;
 	}
 
 	// get x2 to buf2 and add it to buf
 
-	bool buf2[1023 - (-1074) + 1];
-	int emax2, emin2, s;
-	int carry, tmp;
+	let buf2 = Array(1023 - -1074 + 1).fill(0);
+	let emax2: number = 0,
+		emin2: number = 0,
+		s: number;
+	let carry: number, tmp: number;
 
 	sign2 = get_sign_double(x2);
-	absx2 = std::fabs(x2);
+	absx2 = Math.abs(x2);
 
-	if (absx2 != 0.) {
+	if (absx2 != 0) {
 		ex2 = get_exponent(absx2);
 		dtmp = absx2;
-		dtmp2 = std::ldexp(1., ex2);
+		dtmp2 = ldexp(1, ex2);
 
 		for (i = 0; i <= 52; i++) {
 			if (dtmp >= dtmp2) {
@@ -111,7 +115,7 @@ export function ddtostring(
 				emin2 = ex2 - i;
 				break;
 			}
-			dtmp2 /= 2.;
+			dtmp2 /= 2;
 		}
 
 		if (sign == sign2) s = 1;
@@ -130,21 +134,20 @@ export function ddtostring(
 		for (i = emin2; i <= emax2; i++) {
 			// NOTICE: tmp may become negative
 			tmp = buf[offset + i] + s * buf2[offset + i] + carry;
-			carry = (int) std::floor(tmp / 2.);
+			carry = Math.floor(tmp / 2);
 			buf[offset + i] = tmp - carry * 2;
 		}
 		for (i = emax2 + 1; i <= emax; i++) {
 			if (carry == 0) break;
 			// NOTICE: tmp may become negative
 			tmp = buf[offset + i] + carry;
-			carry = (int) std::floor(tmp / 2.);
+			carry = Math.floor(tmp / 2);
 			buf[offset + i] = tmp - carry * 2;
 		}
 		while (buf[offset + emax] == 0) {
 			emax--;
 		}
 	}
-
 
 	if (emin > 0) {
 		for (i = 0; i < emin; i++) {
@@ -160,8 +163,11 @@ export function ddtostring(
 		emax = 0;
 	}
 
-	std::list<int> result1, result2;
-	int result_max, result_min, m, pm;
+	//std::list<int> result1, result2;
+	let result1: Dequeue<number> = new Dequeue();
+	let result2: Dequeue<number> = new Dequeue();
+
+	let result_max: number, result_min: number, m: number, pm: number;
 
 	result_max = -1;
 
@@ -178,14 +184,15 @@ export function ddtostring(
 		carry = 0;
 		for (i = emax; i >= 0; i--) {
 			tmp = carry * 2 + buf[offset + i];
-			buf[offset + i] = tmp / pm;
+			buf[offset + i] = Math.floor(tmp / pm);
+
 			carry = tmp % pm;
 		}
 
 		for (i = 0; i < m; i++) {
 			result_max++;
-			result1.push_back(carry % 10);
-			carry /= 10;
+			result1.push(carry % 10);
+			carry = Math.floor(carry / 10);
 		}
 
 		while (emax >= 0 && buf[offset + emax] == 0) {
@@ -196,7 +203,7 @@ export function ddtostring(
 	result_min = 0;
 
 	while (emin < 0) {
-		m = std::min(8, -emin);
+		m = Math.min(8, -emin);
 		pm = 1;
 		for (i = 0; i < m; i++) pm *= 10;
 
@@ -204,13 +211,14 @@ export function ddtostring(
 		for (i = emin; i <= -1; i++) {
 			tmp = buf[offset + i] * pm + carry;
 			buf[offset + i] = tmp % 2;
-			carry = tmp / 2;
+			carry = Math.floor(tmp / 2);
 		}
 
 		for (i = 0; i < m; i++) {
 			result_min--;
-			pm /= 10;
-			result2.push_back(carry / pm);
+			//pm /= 10;
+			pm = Math.floor(pm / 10);
+			result2.push(Math.floor(carry / pm));
 			carry %= pm;
 		}
 
@@ -219,28 +227,31 @@ export function ddtostring(
 		}
 	}
 
-	std::vector<int> result;
-	int offset2;
+	//std::vector<int> result;
+	let result = Array(result_max - result_min + 1 + 2).fill(0);
+	let offset2: number;
 
 	// add 1byte margin to both ends of array
-	result.resize(result_max - result_min + 1 + 2);
+	//result.resize(result_max - result_min + 1 + 2);
 	offset2 = -result_min + 1;
 	for (i = 0; i <= result_max; i++) {
-		result[offset2 + i] = result1.front();
-		result1.pop_front();
+		result[offset2 + i] = result1.get_value(0);
+		result1.shift();
 	}
 	for (i = -1; i >= result_min; i--) {
-		result[offset2 + i] = result2.front();
-		result2.pop_front();
+		result[offset2 + i] = result2.get_value(0);
+		result2.shift();
 	}
 
-
-	std::ostringstream result_str;
+	//std::ostringstream result_str;
+	let result_str: string[] = [];
 
 	if (sign == 1) {
-		result_str << "";
+		//result_str << "";
+		result_str.push('');
 	} else {
-		result_str << "-";
+		//result_str << "-";
+		result_str.push('-');
 	}
 
 	if (format == 'f') {
@@ -269,8 +280,10 @@ export function ddtostring(
 
 		// make result string
 		for (i = result_max; i >= result_min; i--) {
-			if (i == -1) result_str << ".";
-			result_str << result[offset2 + i];
+			//if (i == -1) result_str << ".";
+			if (i == -1) result_str.push('.');
+			//result_str << result[offset2 + i];
+			result_str.push(result[offset2 + i]);
 		}
 	} else if (format == 'e') {
 		// delete zeros of head
@@ -305,12 +318,15 @@ export function ddtostring(
 
 		// make result string
 		for (i = result_max; i >= result_min; i--) {
-			if (i == result_max - 1) result_str << ".";
-			result_str << result[offset2 + i];
+			//if (i == result_max - 1) result_str << ".";
+			if (i == result_max - 1) result_str.push('.');
+			//result_str << result[offset2 + i];
+			result_str.push(result[offset2 + i]);
 		}
 		// sprintf(stmp, "e%+03d", result_max);
-		result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max <<
-		std::noshowpos;
+		// result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max <<
+		// std::noshowpos;
+		result_str.push('ALTERNATE');
 	} else if (format == 'g') {
 		// delete zeros of head
 		while (result[offset2 + result_max] == 0) {
@@ -351,8 +367,10 @@ export function ddtostring(
 
 			// make result string
 			for (i = result_max; i >= result_min; i--) {
-				if (i == -1) result_str << ".";
-				result_str << result[offset2 + i];
+				//if (i == -1) result_str << ".";
+				if (i == -1) result_str.push('.');
+				//result_str << result[offset2 + i];
+				result_str.push(result[offset2 + i]);
 			}
 		} else {
 			// use 'e' like format
@@ -364,20 +382,25 @@ export function ddtostring(
 
 			// make result string
 			for (i = result_max; i >= result_min; i--) {
-				if (i == result_max - 1) result_str << ".";
-				result_str << result[offset2 + i];
+				//if (i == result_max - 1) result_str << ".";
+				if (i == result_max - 1) result_str.push('.');
+				//result_str << result[offset2 + i];
+				result_str.push(result[offset2 + i]);
 			}
 			// sprintf(stmp, "e%+03d", result_max);
-			result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) <<
-			result_max << std::noshowpos;
+			// result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) <<
+			// result_max << std::noshowpos;
+			result_str.push('ALTERNATE');
 		}
 	} else if (format == 'a') {
 		// make result string
 		for (i = result_max; i >= result_min; i--) {
-			if (i == -1) result_str << ".";
-			result_str << result[offset2 + i];
+			//if (i == -1) result_str << ".";
+			if (i == -1) result_str.push('.');
+			//result_str << result[offset2 + i];
+			result_str.push(result[offset2 + i]);
 		}
 	}
 
-	return result_str.str();
+	return result_str;
 }
