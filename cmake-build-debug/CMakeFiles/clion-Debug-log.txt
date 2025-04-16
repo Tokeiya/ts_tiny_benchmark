@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /repo/ts_tiny_benchmark Select CMakeLists.txt
+/home/tokeiya3/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/tokeiya3/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S /repo/ts_tiny_benchmark -B /repo/ts_tiny_benchmark/cmake-build-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /repo/ts_tiny_benchmark/cmake-build-debug
