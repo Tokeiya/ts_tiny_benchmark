@@ -387,7 +387,8 @@ export function ddtostring(
 			// sprintf(stmp, "e%+03d", result_max);
 			// result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) <<
 			//result_max << std::noshowpos;
-			result_str.push('ALTERNATE');
+			result_str.push('e');
+			result_str.push(result_max.toString());
 		}
 	} else if (format == 'a') {
 		// make result string
