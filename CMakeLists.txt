@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.31)
-project(untitled1)
+project(kv_survey)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(untitled1 cpp_scr/main.cpp)
+add_executable(kv_survey cpp_scr/main.cpp)
 
-target_include_directories(untitled1 PRIVATE ${PROJECT_SOURCE_DIR}/kv)
+target_include_directories(kv_survey PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/kv)

@@ -1,4 +1,4 @@
-import { fastToSum, twoSum, split, twoProduct } from '../scr/dd/nearBy.js';
+import { fastToSum, twoSum, split, twoProduct } from '../ts_scr/dd/nearBy.js';
 import { expect, test } from 'vitest';
 
 test('simple addition with no rounding error', () => {
