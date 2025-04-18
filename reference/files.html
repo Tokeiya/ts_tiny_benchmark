@@ -1,0 +1,1009 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>file list</TITLE>
+</HEAD>
+<BODY>
+<div align=right>
+最終更新: 2025/3/15
+</div>
+<H1>
+<div align=center>
+構成ファイルの役割一覧
+</div>
+</H1>
+<TABLE BORDER>
+<TR>
+	<TD>README.txt</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>LICENSE.txt</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/</TD>
+	<TD>このdirectory以下が本体</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/convert.hpp</TD>
+	<TD>数値型のプログラミングのため全体的に使われている</TD>
+</TR>
+<TR>
+	<TD>kv/constants.hpp</TD>
+	<TD>定数の定義</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/interval.hpp</TD>
+	<TD>区間演算</TD>
+</TR>
+<TR>
+	<TD>kv/rdouble.hpp</TD>
+	<TD>内部にdoubleを持つ区間演算で精度保証するために必要な追加ファイル(実体はrdouble-hwround.hpp or rdouble-nohwround.hpp or rdouble-avx512.hpp )</TD>
+</TR>
+<TR>
+	<TD>kv/rdouble-hwround.hpp</TD>
+	<TD>内部にdoubleを持つ区間演算を丸めモード変更で実現</TD>
+</TR>
+<TR>
+	<TD>kv/rdouble-nohwround.hpp</TD>
+	<TD>内部にdoubleを持つ区間演算を丸めモード変更を使わずに実現(-DKV_NOHWROUNDで有効に)</TD>
+</TR>
+<TR>
+	<TD>kv/rdouble-avx512.hpp</TD>
+	<TD>内部にdoubleを持つ区間演算をAVX-512の丸め方向指定付き命令で実現</TD>
+</TR>
+<TR>
+	<TD>kv/conv-double.hpp</TD>
+	<TD>doubleと文字列の間の丸め指定付き変換。単体でも使用可能。</TD>
+</TR>
+<TR>
+	<TD>kv/hwround.hpp</TD>
+	<TD>丸めモード変更</TD>
+</TR>
+<TR>
+	<TD>kv/interval-vector.hpp</TD>
+	<TD>区間ベクトル、区間行列のための関数群</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/dd.hpp</TD>
+	<TD>4倍精度計算</TD>
+</TR>
+<TR>
+	<TD>kv/rdd.hpp</TD>
+	<TD>内部にddを持つ区間演算で精度保証するために必要な追加ファイル(実体はrdd-hwround.hpp or rdd-nohwround.hpp or rdd-avx512.hpp)</TD>
+</TR>
+<TR>
+	<TD>kv/rdd-hwround.hpp</TD>
+	<TD>内部にddを持つ区間演算を丸めモード変更で実現</TD>
+</TR>
+<TR>
+	<TD>kv/rdd-nohwround.hpp</TD>
+	<TD>内部にddを持つ区間演算を丸めモード変更を使わずに実現(-DKV_NOHWROUNDで有効に)</TD>
+</TR>
+<TR>
+	<TD>kv/rdd-avx512.hpp</TD>
+	<TD>内部にddを持つ区間演算をAVX-512の丸め方向指定付き命令で実現</TD>
+</TR>
+<TR>
+	<TD>kv/conv-dd.hpp</TD>
+	<TD>ddと文字列の間の丸め指定付き変換。単体でも使用可能。</TD>
+</TR>
+<TR>
+	<TD>kv/fpu53.hpp</TD>
+	<TD>Intel CPUのFPUの計算精度を53bitにセットする (version 0.4.54で使用しなくなった)</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/rfloat64x.hpp</TD>
+	<TD>内部にIntel 80bit浮動小数点数 (_Float64x) を持つ区間演算を実現</TD>
+</TR>
+<TR>
+	<TD>kv/ddx.hpp</TD>
+	<TD>Intel 80bit浮動小数点数 (_Float64x) を2つ繋げた全長160bit、指数部15bit、仮数部128bitの計算</TD>
+</TR>
+<TR>
+	<TD>kv/rddx.hpp</TD>
+	<TD>内部にddx型を持つ区間演算を実現</TD>
+</TR>
+<TR>
+	<TD>kv/conv-float64x.hpp</TD>
+	<TD>_Float64xと文字列の間の丸め指定付き変換</TD>
+</TR>
+<TR>
+	<TD>kv/conv-ddx.hpp</TD>
+	<TD>ddxと文字列の間の丸め指定付き変換</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/mpfr.hpp</TD>
+	<TD>mpfrのラッパー</TD>
+</TR>
+<TR>
+	<TD>kv/rmpfr.hpp</TD>
+	<TD>内部にmpfrを持つ区間演算を実現するのに必要な追加ファイル</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/interval-conv.hpp</TD>
+	<TD>(<font color="red">廃止予定</font>。interval-converter.hppを使って下さい。) interval&lt;double&gt;, interval&lt;dd&gt;, interval&lt;mpfr&gt;の間の相互変換。double, dd, mpfrの間の丸め方向付き相互変換</TD>
+</TR>
+<TR>
+	<TD>kv/interval-converter.hpp</TD>
+	<TD>interval&lt;double&gt;, interval&lt;dd&gt;, interval&lt;mpfr&gt;, interval&lt;_Float64x&gt;, interval&lt;ddx&gt;の間の相互変換。double, dd, mpfr, _float64x, ddxの間の丸め方向付き相互変換</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/complex.hpp</TD>
+	<TD>複素数演算</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/autodif.hpp</TD>
+	<TD>自動微分</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/affine.hpp</TD>
+	<TD>affine arithmetic</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/psa.hpp</TD>
+	<TD>ベキ級数演算</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/kraw-approx.hpp</TD>
+	<TD>近似解を元にした非線形方程式に対するKrawczyk法</TD>
+</TR>
+<TR>
+	<TD>kv/make-candidate.hpp</TD>
+	<TD>候補者集合の生成のための小さな関数</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/allsol.hpp</TD>
+	<TD>非線形方程式の全解探索</TD>
+</TR>
+<TR>
+	<TD>kv/allsol-simple.hpp</TD>
+	<TD>allsol.hppの機能を削ってsimpleにしたもの</TD>
+</TR>
+<TR>
+	<TD>kv/allsol-affine.hpp</TD>
+	<TD>Affineを使った全解探索 (十分テストされていない)</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/ode.hpp</TD>
+	<TD>常微分方程式の精度保証 (psaを使った1step法、あるいはそれを繋いだもの)</TD>
+</TR>
+<TR>
+	<TD>kv/ode-autodif.hpp</TD>
+	<TD>ode.hppで初期値をautodif型にしたもの。初期値に関する微分が出来る。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-maffine.hpp</TD>
+	<TD>ode.hppをaffineで接続したもの。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-param.hpp</TD>
+	<TD>odeを解くためのいろいろなパラメータを定義したもの</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/ode-maffine2.hpp</TD>
+	<TD>ode-maffineの高速版。初期値に関する微分ができない。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-affine.hpp</TD>
+	<TD>psaによる1step法で内部にまでaffineを使ったもの。高性能なはずだが遅い。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-affine-wrapper.hpp</TD>
+	<TD>ode-affine.hppを少し簡略化したもの。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-qr.hpp</TD>
+	<TD>psa法による1step法を、QR分解で接続したもの。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-lohner.hpp</TD>
+	<TD>Lohnerによる1step法を実装したもの。初期値に関する微分が出来るversionも含む。十分テストされていない。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-qr-lohner.hpp</TD>
+	<TD>Lohnerによる1step法をQR分解で接続したもの。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-callback.hpp</TD>
+	<TD>ode-*.hppでのcallback関数のためのbaseクラス</TD>
+</TR>
+<TR>
+	<TD>kv/odescale.hpp</TD>
+	<TD>odeのscalingに関する実験。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-nv.hpp</TD>
+	<TD>単なるTaylor展開によるode。精度保証しない。</TD>
+</TR>
+<TR>
+	<TD>kv/ode-autodif-nv.hpp</TD>
+	<TD>ode-nv.hppの初期値をautodif型にしたもの。初期値に関する微分が出来る。精度保証しない。</TD>
+</TR>
+<TR>
+	<TD>kv/rk.hpp</TD>
+	<TD>単なる4次のルンゲクッタ法。精度保証しない。</TD>
+</TR>
+<TR>
+	<TD>kv/rkf45.hpp</TD>
+	<TD>RKF45。精度保証しない。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/strobomap.hpp</TD>
+	<TD>ode solverを使って、いわゆるストロボマップを定義。これとkraw-approxやallsolを組み合わせられる。</TD>
+</TR>
+<TR>
+	<TD>kv/poincaremap.hpp</TD>
+	<TD>ode solverを使ってポアンカレマップを定義。これとkraw-approxやallsolを組み合わせられる。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/defint.hpp</TD>
+	<TD>精度保証付き数値積分</TD>
+</TR>
+<TR>
+	<TD>kv/defint-newtoncotes.hpp</TD>
+	<TD>複合Newton-Cotes公式による精度保証付き数値積分</TD>
+</TR>
+<TR>
+	<TD>kv/defint-singular.hpp</TD>
+	<TD>端点に特異性を持つ関数の精度保証付き数値積分</TD>
+</TR>
+<TR>
+	<TD>kv/doubleintegral.hpp</TD>
+	<TD>精度保証付き二重積分。三角形領域も。</TD>
+</TR>
+<TR>
+	<TD>kv/double-newtoncotes.hpp</TD>
+	<TD>複合Newton-Cotes公式による精度保証付き二重積分</TD>
+</TR>
+<TR>
+	<TD>kv/doubleint-curvededge.hpp</TD>
+	<TD>複合Newton-Cotes公式による曲がった辺を持つ長方形領域での精度保証付き二重積分</TD>
+</TR>
+<TR>
+	<TD>kv/doubleint-singular.hpp</TD>
+	<TD>辺及び一点に特異性を持つ関数の精度保証付き二重積分</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/lobachevsky.hpp</TD>
+	<TD>Lobachevsky関数の精度保証。まだまだ試作段階。</TD>
+</TR>
+<TR>
+	<TD>kv/gamma.hpp</TD>
+	<TD>gamma, digamma, trigamma, lgamma関数の精度保証。まだまだ試作段階。</TD>
+</TR>
+<TR>
+	<TD>kv/beta.hpp</TD>
+	<TD>beta関数の精度保証。まだまだ試作段階。</TD>
+</TR>
+<TR>
+	<TD>kv/hypergeom.hpp</TD>
+	<TD>ガウスの超幾何関数の精度保証。まだまだ試作段階。</TD>
+</TR>
+<TR>
+	<TD>kv/airy.hpp</TD>
+	<TD>Airy関数の精度保証。まだまだ試作段階。</TD>
+</TR>
+<TR>
+	<TD>kv/bessel.hpp</TD>
+	<TD>第1種Bessel関数の精度保証。まだまだ試作段階。</TD>
+</TR>
+<TR>
+	<TD>kv/geoseries.hpp</TD>
+	<TD>公比が区間である等比級数の和を求める関数</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/matrix-inversion.hpp</TD>
+	<TD>(近似)逆行列。ublasの単なるラッパー。他にもいろいろあるがundocumented。</TD>
+</TR>
+<TR>
+	<TD>kv/qr.hpp</TD>
+	<TD>(近似)QR分解。単なるグラムシュミットの直交化。</TD>
+</TR>
+<TR>
+	<TD>kv/vleq.hpp</TD>
+	<TD>線形方程式の精度保証。何の工夫もない基本的なもの。</TD>
+</TR>
+<TR>
+	<TD>kv/eig.hpp</TD>
+	<TD>非対称実行列の固有値と固有ベクトルを(近似的に)計算するeig関数と、非対称実行列の固有値を精度保証付きで計算するveig関数。高安 亮紀氏の提供による。</TD>
+</TR>
+<TR>
+	<TD>kv/lp.hpp</TD>
+	<TD>線形計画問題を解く単体法の精度保証。十分テストされていない。</TD>
+</TR>
+<TR>
+	<TD>kv/optimize.hpp</TD>
+	<TD>最適化問題を解く。十分テストされていない。</TD>
+</TR>
+<TR>
+	<TD>kv/kkt.hpp</TD>
+	<TD>目的関数、不等式制約、等式制約からKKT方程式を作成する。</TD>
+</TR>
+<TR>
+	<TD>kv/newton.hpp</TD>
+	<TD>単なるNewton法。精度保証しない。十分テストされていない。</TD>
+</TR>
+<TR>
+	<TD>kv/dka.hpp</TD>
+	<TD>精度保証しないDurand Kerner Aberth法を行うdka関数と、Smithの定理を用いて精度保証するvdka関数。十分テストされてない。</TD>
+</TR>
+<TR>
+	<TD>kv/cardano-ferrari.hpp</TD>
+	<TD>3/4次の多項式の解をCardano/Ferrariの方法で直接区間演算で計算する。実用性はともかく、面白そうなので作ってみた。</TD>
+</TR>
+<TR>
+	<TD>kv/highderiv.hpp</TD>
+	<TD>ベキ級数演算を用いて、与えられた1変数関数の高階微分を計算する。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/matplotlib.hpp</TD>
+	<TD>python+matplotlibの呼び出しによる簡易グラフィックス</TD>
+</TR>
+<TR>
+	<TD>kv/psa-plot.hpp</TD>
+	<TD>psa型をmatplotlibで描画。</TD>
+</TR>
+<TR>
+	<TD>kv/jointrange.hpp</TD>
+	<TD>affine arithmeticのjoint rangeをmatplotlibで描画。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/version.hpp</TD>
+	<TD>kvのバージョン番号が記載されている。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>kv/all.hpp</TD>
+	<TD>kv以下の全ファイルをまとめてinclude。コンパイル時間がかかるのでお勧めしない。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/</TD>
+	<TD>以下はテスト用。kv以下の対応するファイルのテスト。呼び出し方のサンプルでもある。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD>なるべく機能を網羅することを意図しているが、現時点では必ずしも網羅しているわけでは無い。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-interval.cc</TD>
+	<TD>区間演算のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-interval-mult.cc</TD>
+	<TD>区間演算の乗算のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-rounding.cc</TD>
+	<TD>加減乗除と平方根で丸めの向きがちゃんと変わっているかどうかの簡易テスト</TD>
+</TR>
+<TR>
+	<TD>test/test-nohwround.cc</TD>
+	<TD>-DKV_NOHWROUNDで用いられる丸め変更のエミュレートが正しく動くかどうかのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-fma.cc</TD>
+	<TD>fma命令が正しく動いているかどうかの簡易テスト</TD>
+</TR>
+<TR>
+	<TD>test/test-dd.cc</TD>
+	<TD>ddのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-idd.cc</TD>
+	<TD>ddを両端に持つ区間演算のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ifloat64x.cc</TD>
+	<TD>_Float64xを両端に持つ区間演算のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ddx.cc</TD>
+	<TD>_Float64xを2つくっつけたddx型のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-iddx.cc</TD>
+	<TD>ddxを両端に持つ区間演算のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-mpfr.cc</TD>
+	<TD>mpfrのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-impfr.cc</TD>
+	<TD>mpfrを両端に持つ区間演算のテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-interval-conv.cc</TD>
+	<TD>(<font color="red">廃止予定</font>) interval-conv.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-interval-converter.cc</TD>
+	<TD>interval-converter.hppのテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-complex.cc</TD>
+	<TD>複素数のテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-autodif.cc</TD>
+	<TD>自動微分のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-affine.cc</TD>
+	<TD>affine arithmeticのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-affine-reduce.cc</TD>
+	<TD>affine arithmeticのダミー変数を減らす関数epsilon_reduceのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-affine-reduce2.cc</TD>
+	<TD>affine arithmeticのダミー変数を減らす関数epsilon_reduce2のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-affinemult.cc</TD>
+	<TD>affine arithmeticの乗算のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-psa.cc</TD>
+	<TD>ベキ級数演算のテスト。</TD>
+</TR>
+<TR>
+	<TD>test/test-psa-history.cc</TD>
+	<TD>ベキ級数演算のhistory機能のテスト。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-kraw-approx.cc</TD>
+	<TD>近似解を元にした非線形方程式に対するKrawczyk法のテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-allsol.cc</TD>
+	<TD>非線形方程式の全解探索のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-allsol-simple.cc</TD>
+	<TD>単純化した非線形方程式の全解探索のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-allsol-affine.cc</TD>
+	<TD>allsol-affine.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-allsol-rest.cc</TD>
+	<TD>重解があった場合など存在非存在が言えない区間が残った場合、それを返してもらう例</TD>
+</TR>
+<TR>
+	<TD>test/test-allsol-infinity.cc</TD>
+	<TD>非線形方程式の無限領域における全解探索のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-complexeq.cc</TD>
+	<TD>非線形方程式を複素領域で解く場合のサンプル</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-ode.cc</TD>
+	<TD>ode.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-autodif.cc</TD>
+	<TD>ode-autodif.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-maffine.cc</TD>
+	<TD>ode-maffine.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-callback.cc</TD>
+	<TD>ode-maffineに対してcallback関数を指定し、解きながら何かさせる場合のサンプル</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-stop.cc</TD>
+	<TD>callback関数を利用して常微分方程式の計算を途中で中止するサンプル</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-ode-maffine2.cc</TD>
+	<TD>ode-maffine2.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-affine.cc</TD>
+	<TD>ode-affine.hpp, ode-affine-wrapper.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-qr.cc</TD>
+	<TD>ode-qr.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-lohner.cc</TD>
+	<TD>ode-lohner.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-qr-lohner.cc</TD>
+	<TD>ode-qr-lohner.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-odescale.cc</TD>
+	<TD>odescale.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-nv.cc</TD>
+	<TD>ode-nv.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-autodif-nv.cc</TD>
+	<TD>ode-autodif-nv.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-rk.cc</TD>
+	<TD>rk.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-rkf45.cc</TD>
+	<TD>rkf45.hppのテスト</TD>
+</TR>
+<!--
+<TR>
+	<TD>test/test-variational.cc</TD>
+	<TD>変分方程式の解き方を変えてみたテストの断片</TD>
+</TR>
+-->
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-strobomap.cc</TD>
+	<TD>strobomap.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-bvp.cc</TD>
+	<TD>strobomapを使って２点境界値問題を解かせるサンプル</TD>
+</TR>
+<TR>
+	<TD>test/test-poincaremap.cc</TD>
+	<TD>poincaremap.hppのテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-defint.cc</TD>
+	<TD>defint.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-defint-byode.cc</TD>
+	<TD>数値積分をODEの一種と見なし、ODE Solverで数値積分を計算</TD>
+</TR>
+<TR>
+	<TD>test/test-doubleintegral.cc</TD>
+	<TD>doubleintegral.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-defint-singular.cc</TD>
+	<TD>defint-singular.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-doubleint-singular.cc</TD>
+	<TD>doubleint-singular.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-lobachevsky.cc</TD>
+	<TD>lobachevsky.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-gamma.cc</TD>
+	<TD>gamma.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-beta.cc</TD>
+	<TD>beta.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-hypergeom.cc</TD>
+	<TD>hypergeom.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-airy.cc</TD>
+	<TD>airy.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-bessel.cc</TD>
+	<TD>bessel.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-geoseries.cc</TD>
+	<TD>geoseries.hppのテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-invert.cc</TD>
+	<TD>matrix-inversion.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-qr.cc</TD>
+	<TD>qr.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-vleq.cc</TD>
+	<TD>vleq.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-eig.cc</TD>
+	<TD>eig.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-lp.cc</TD>
+	<TD>lp.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-optimize.cc</TD>
+	<TD>optimize.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-optimize-nd.cc</TD>
+	<TD>optimize.hppの微分を使わない最適化関数のテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-kkt.cc</TD>
+	<TD>kkt.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-newton.cc</TD>
+	<TD>newton.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-dka.cc</TD>
+	<TD>dka.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-cardano-ferrari.cc</TD>
+	<TD>cardano-ferrari.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/highderiv.cc</TD>
+	<TD>highderiv.hppのテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>test/test-matplotlib.cc</TD>
+	<TD>matplotlib.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-psa-plot.cc</TD>
+	<TD>psa-plot.hppのテスト</TD>
+</TR>
+<TR>
+	<TD>test/test-ode-plot.cc</TD>
+	<TD>psa-plot.hppとodeのcallbackを使ってodeの軌道を計算しながら表示。</TD>
+</TR>
+<TR>
+	<TD>test/test-jointrange.cc</TD>
+	<TD>jointrange.hppのテスト</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/</TD>
+	<TD>以下は過去にいろいろな問題を解かせたときのファイル群。作者もよく覚えていない。</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD>以下は非線形方程式の全解探索のexample</TD>
+</TR>
+<TR>
+	<TD>example/allsolexample.hpp</TD>
+	<TD>全解探索のテスト問題いろいろ</TD>
+</TR>
+<TR>
+	<TD>example/allsolexample.cc</TD>
+	<TD>allsolexample.hppを実行</TD>
+</TR>
+<TR>
+	<TD>example/burkardt-non.hpp</TD>
+	<TD><A HREF="http://people.sc.fsu.edu/~jburkardt/f_src/test_nonlin/test_nonlin.html">http://people.sc.fsu.edu/~jburkardt/f_src/test_nonlin/test_nonlin.html</A>にあった例題</TD>
+</TR>
+<TR>
+	<TD>example/test-burkardt-non.cc</TD>
+	<TD>burkardt-non.hppを実行</TD>
+</TR>
+<TR>
+	<TD>example/coprin.hpp</TD>
+	<TD><A HREF="http://www-sop.inria.fr/coprin/logiciels/ALIAS/Benches/benches.html">http://www-sop.inria.fr/coprin/logiciels/ALIAS/Benches/benches.html</A>にあった例題</TD>
+</TR>
+<TR>
+	<TD>example/test-coprin.cc</TD>
+	<TD>coprin.hppを実行</TD>
+</TR>
+<TR>
+	<TD>example/test-nishi.cc</TD>
+	<TD>西先生による、5つの解を持つ2-transistor回路の例</TD>
+</TR>
+<TR>
+	<TD>example/test-kanz.cc</TD>
+	<TD>神澤他: "有限ステップで停止する非線形方程式のすべての解を精度保証付きで求めるアルゴリズム"の例題を解く</TD>
+</TR>
+<TR>
+	<TD>example/zeros-legendre.cc</TD>
+	<TD>ルジャンドル関数のゼロ点をいくつかの方法で求める</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD>以下はODEのexample</TD>
+</TR>
+<TR>
+	<TD>example/ivp-example.hpp</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/ivp-example.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/burkardt-ode.hpp</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-burkardt-ode.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-kubota.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-kepler.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-duffing.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-3body.cc</TD>
+	<TD>三体問題</TD>
+</TR>
+<TR>
+	<TD>example/test-oga.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-neher.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-ueda.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/neumaier-ex2.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/doublependulum.cc</TD>
+	<TD>二重振り子</TD>
+</TR>
+<TR>
+	<TD>example/test-vdp.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-oregonator.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/rober.cc</TD>
+	<TD>Robertson problem</TD>
+</TR>
+<TR>
+	<TD>example/test-parametric.cc</TD>
+	<TD>パラメータを含むODEをパラメータを未知関数に変換して解く例</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/lorenz-periodic.cc</TD>
+	<TD>ポアンカレマップを用いてローレンツ方程式の周期解を求める</TD>
+</TR>
+<TR>
+	<TD>example/rossler-periodic.cc</TD>
+	<TD>ポアンカレマップを用いてレスラー方程式の周期解を求める</TD>
+</TR>
+<TR>
+	<TD>example/craik-periodic.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD>以下は数値積分のexample</TD>
+</TR>
+<TR>
+	<TD>example/burkardt-int.hpp</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/test-burkardt-int.cc</TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD>example/defint-example.cc</TD>
+	<TD>数値積分の例題集</TD>
+</TR>
+<TR>
+	<TD>example/defint-singular-example.cc</TD>
+	<TD>端点特異性を持つ数値積分の例題集</TD>
+</TR>
+<TR>
+	<TD>example/defint-ooura.cc</TD>
+	<TD><A HREF="http://www.kurims.kyoto-u.ac.jp/~ooura/intdefaq-j.html">大浦先生のDEパッケージFAQ</A>にあった数値積分の例題</TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD><BR></TD>
+</TR>
+<TR>
+	<TD><BR></TD>
+	<TD>その他</TD>
+</TR>
+<TR>
+	<TD>example/test-evalrange.cc</TD>
+	<TD>ある5変数関数の像をinterval, affine, mvfで計算</TD>
+</TR>
+<TR>
+	<TD>example/hessian.cc</TD>
+	<TD>autodifを使ってHessianを計算させる例</TD>
+</TR>
+</TABLE>
+</BODY>
+
+</HTML>

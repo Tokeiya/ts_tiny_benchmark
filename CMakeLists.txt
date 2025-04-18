@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.31)
 project(kv_survey)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(kv_survey cpp_scr/main.cpp)
 

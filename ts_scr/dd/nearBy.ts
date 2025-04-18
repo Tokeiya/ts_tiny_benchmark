@@ -1,7 +1,7 @@
-import { ldexp } from './share';
+import { ldexp } from './share.js';
 import { isNumberObject } from 'node:util/types';
 
-export function fastToSum(a: number, b: number): [number, number] {
+export function fastToSum(a: numbZer, b: number): [number, number] {
 	let x = a + b;
 	let tmp = x - a;
 	let y = b - tmp;
