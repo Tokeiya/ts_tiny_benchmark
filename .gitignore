@@ -136,7 +136,4 @@ dist
 .pnp.*
 
 
-cmake-*/**
-
-
-
+/cmake-*/**
