@@ -131,3 +131,9 @@ test('DoubleDouble toString', () => {
 	const dd = new DoubleDouble(1.0, 2.0);
 	expect(dd.toString()).toBe('3.0');
 });
+
+test('DoubleDouble toString with NaN', () => {
+	const dd = new DoubleDouble(1.5, 2.0);
+	let result = DoubleDouble.ddtostring(dd.a1, dd.a2);
+	console.log(result);
+});
