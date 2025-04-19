@@ -1,9 +1,14 @@
 import { ldexp } from './share.js';
+import {Dequeue} from '../dequeue.js';
 
 export class DoubleDouble {
 	public readonly a1: number;
 	public readonly a2: number;
 
+	private static min(a:bigint, b:bigint):bigint {
+		if (a < b) return a;
+		else return b;
+	}
 	public static fromNumbers(value: number): DoubleDouble {
 		return new DoubleDouble(value, 0);
 	}
@@ -19,392 +24,31 @@ export class DoubleDouble {
 		this.a2 = a2;
 	}
 
-	private static get_sign_double(x: number): number {
+	private static get_sign_double(x: number): bigint {
 		if (x == 0) {
 			x = 1 / x;
 		}
 
-		if (x > 0) return 1;
-		else return -1;
+		if (x > 0) return 1n;
+		else return -1n;
 	}
 
 	private static ldexp(mantissa: number, exponent: number): number {
 		return mantissa * Math.pow(2, exponent);
 	}
 
-	private static  ddtostring(x1:number, x2:number, precision:bigint = 34n,
-	                           format:string = 'g', mode:bigint = 0n):string[] {
-	int i, j;
-	int sign, sign2, ex1, ex2;
-	double absx1, absx2;
 
-	if (x1 != x1 || x2 != x2) return ["nan"];
-
-	let sign = DoubleDouble.get_sign_double(x1);
-	let absx1 = Math.abs(x1);
-
-	if (absx1 == 0.) {
-	if (sign == -1) {
-	return ["-0"];
-} else {
-	return ["0"];
-}
-}
-
-if (DoubleDouble.get_sign_double(absx1)) {
-	if (sign == -1) {
-		return ["-inf"];
-	} else {
-		return ["inf"];
-	}
-}
-
-// get x1 to buf
-
-let ex1 = DoubleDouble.get_exponent(absx1);
-
-// add 1-byte margin to add buf2
-//bool buf[1023 - (-1074) + 2];
-
-
-int offset = 1074;
-int emax, emin;
-double dtmp, dtmp2;
-
-dtmp = absx1;
-dtmp2 = std::ldexp(1., ex1);
-
-for (i=0; i<=52; i++) {
-	if (dtmp >= dtmp2) {
-		buf[offset + ex1 - i] = 1;
-		dtmp -= dtmp2;
-	} else {
-		buf[offset + ex1 - i] = 0;
-	}
-	if (dtmp == 0) {
-		emax = ex1;
-		emin = ex1 - i;
-		break;
-	}
-	dtmp2 /= 2.;
-}
-
-// get x2 to buf2 and add it to buf
-
-bool buf2[1023 - (-1074) + 1];
-int emax2, emin2, s;
-int carry, tmp;
-
-sign2 = get_sign_double(x2);
-absx2 = std::fabs(x2);
-
-if (absx2 != 0.) {
-	ex2 = get_exponent(absx2);
-	dtmp = absx2;
-	dtmp2 = std::ldexp(1., ex2);
-
-	for (i=0; i<=52; i++) {
-		if (dtmp >= dtmp2) {
-			buf2[offset + ex2 - i] = 1;
-			dtmp -= dtmp2;
-		} else {
-			buf2[offset + ex2 - i] = 0;
-		}
-		if (dtmp == 0) {
-			emax2 = ex2;
-			emin2 = ex2 - i;
-			break;
-		}
-		dtmp2 /= 2.;
-	}
-
-	if (sign == sign2)  s = 1;
-	else s = -1;
-
-	if (emin > emin2) {
-		for (i=emin2; i<=emin-1; i++) {
-			buf[offset + i] = 0;
-		}
-		emin = emin2;
-	}
-	emax++;
-	buf[offset + emax] = 0;
-
-	carry = 0;
-	for (i=emin2; i<=emax2; i++) {
-		// NOTICE: tmp may become negative
-		tmp = buf[offset + i] + s * buf2[offset + i] + carry;
-		carry = (int)std::floor(tmp / 2.);
-		buf[offset + i] = tmp - carry * 2;
-	}
-	for (i=emax2+1; i<=emax; i++) {
-		if (carry == 0) break;
-		// NOTICE: tmp may become negative
-		tmp = buf[offset + i] + carry;
-		carry = (int)std::floor(tmp / 2.);
-		buf[offset + i] = tmp - carry * 2;
-	}
-	while (buf[offset + emax] == 0) {
-		emax--;
-	}
-}
-
-
-if (emin > 0) {
-	for (i=0; i<emin; i++) {
-		buf[offset + i] = 0;
-	}
-	emin = 0;
-}
-
-if (emax < 0) {
-	for (i=emax + 1; i<=0; i++) {
-		buf[offset + i] = 0;
-	}
-	emax = 0;
-}
-
-std::list<int> result1, result2;
-int result_max, result_min, m, pm;
-
-result_max = -1;
-
-while (emax >= 0) {
-	if (emax >= 17) m= 5;
-	else if (emax >= 14) m = 4;
-	else if (emax >= 10) m = 3;
-	else if (emax >= 7) m = 2;
-	else  m = 1;
-
-	pm = 1;
-	for (i=0; i<m; i++) pm *= 10;
-
-	carry = 0;
-	for (i=emax; i>=0; i--) {
-		tmp = carry * 2 + buf[offset + i];
-		buf[offset + i] = tmp / pm;
-		carry = tmp % pm;
-	}
-
-	for (i=0; i<m; i++) {
-		result_max++;
-		result1.push_back(carry  % 10);
-		carry /= 10;
-	}
-
-	while (emax >= 0 && buf[offset + emax] == 0) {
-		emax--;
-	}
-}
-
-result_min = 0;
-
-while (emin < 0) {
-	m = std::min(8, -emin);
-	pm = 1;
-	for (i=0; i<m; i++) pm *= 10;
-
-	carry = 0;
-	for (i=emin; i<=-1; i++) {
-		tmp = buf[offset + i] * pm + carry;
-		buf[offset + i] = tmp % 2;
-		carry = tmp / 2;
-	}
-
-	for (i=0; i<m; i++) {
-		result_min--;
-		pm /= 10;
-		result2.push_back(carry / pm);
-		carry %= pm;
-	}
-
-	while (emin < 0 && buf[offset + emin] == 0) {
-		emin++;
-	}
-}
-
-std::vector<int> result;
-int offset2;
-
-// add 1byte margin to both ends of array
-result.resize(result_max - result_min + 1 + 2);
-offset2 = - result_min + 1;
-for (i=0; i<=result_max; i++) {
-	result[offset2 + i] = result1.front();
-	result1.pop_front();
-}
-for (i=-1; i>=result_min; i--) {
-	result[offset2 + i] = result2.front();
-	result2.pop_front();
-}
-
-#if 0
-for (i=result_min; i<=result_max; i++) {
-	std::cout << i << ':' << result[offset2 + i] << "\n";
-}
-#endif
-
-std::ostringstream result_str;
-
-if (sign == 1) {
-	result_str << "";
-} else {
-	result_str << "-";
-}
-
-if (format == 'f') {
-	// round to precision after decimal point
-	if (-(precision+1) >= result_min) {
-		result_min = -precision;
-		tmp = result[offset2 + result_min - 1];
-		if ((mode == 1 && sign == 1) || (mode == -1 && sign == -1) || (mode == 0 && tmp >= 5)) {
-			result[offset2 + result_max + 1] = 0;
-			result_max++;
-			for (i=result_min; i<=result_max; i++) {
-				result[offset2 + i]++;
-				if (result[offset2 + i] != 10) break;
-				result[offset2 + i] = 0;
-			}
-			if (result[offset2 + result_max] == 0) {
-				result_max--;
-			}
-		}
-	}
-
-	// delete zeros of tail
-	while (result_min < 0 && result[offset2 + result_min] == 0) {
-		result_min++;
-	}
-
-	// make result string
-	for (i=result_max; i>=result_min; i--) {
-		if (i == -1) result_str << ".";
-		result_str << result[offset2 + i];
-	}
-
-} else if (format == 'e') {
-	// delete zeros of head
-	while (result[offset2 + result_max] == 0) {
-		result_max--;
-	}
-
-	// round to precision
-	if (result_max-precision-1 >= result_min) {
-		result_min = result_max - precision;
-		tmp = result[offset2 + result_min - 1];
-		if ((mode == 1 && sign == 1) || (mode == -1 && sign == -1) || (mode == 0 && tmp >= 5)) {
-			result[offset2 + result_max + 1] = 0;
-			result_max++;
-			for (i=result_min; i<=result_max; i++) {
-				result[offset2 + i]++;
-				if (result[offset2 + i] != 10) break;
-				result[offset2 + i] = 0;
-			}
-			if (result[offset2 + result_max] == 0) {
-				result_max--;
-			} else {
-				result_min++;
-			}
-		}
-	}
-
-	// delete zeros of tail
-	while (result[offset2 + result_min] == 0) {
-		result_min++;
-	}
-
-	// make result string
-	for (i=result_max; i>=result_min; i--) {
-		if (i == result_max -1) result_str << ".";
-		result_str << result[offset2 + i];
-	}
-	// sprintf(stmp, "e%+03d", result_max);
-	result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max << std::noshowpos;
-
-} else if (format == 'g') {
-	// delete zeros of head
-	while (result[offset2 + result_max] == 0) {
-		result_max--;
-	}
-
-	// round to precision
-	if (result_max-precision >= result_min) {
-		result_min = result_max - precision + 1;
-		tmp = result[offset2 + result_min - 1];
-		if ((mode == 1 && sign == 1) || (mode == -1 && sign == -1) || (mode == 0 && tmp >= 5)) {
-			result[offset2 + result_max + 1] = 0;
-			result_max++;
-			for (i=result_min; i<=result_max; i++) {
-				result[offset2 + i]++;
-				if (result[offset2 + i] != 10) break;
-				result[offset2 + i] = 0;
-			}
-			if (result[offset2 + result_max] == 0) {
-				result_max--;
-			} else {
-				result_min++;
-			}
-		}
-	}
-
-	if (-4 <= result_max && result_max <= precision -1) {
-		// use 'f' like format
-
-		// delete zeros of tail
-		while (result_min < 0 && result[offset2 + result_min] == 0) {
-			result_min++;
-		}
-
-		if (result_max < 0) {
-			result_max = 0;
-		}
-
-		// make result string
-		for (i=result_max; i>=result_min; i--) {
-			if (i == -1) result_str << ".";
-			result_str << result[offset2 + i];
-		}
-
-	} else {
-		// use 'e' like format
-
-		// delete zeros of tail
-		while (result[offset2 + result_min] == 0) {
-			result_min++;
-		}
-
-		// make result string
-		for (i=result_max; i>=result_min; i--) {
-			if (i == result_max -1) result_str << ".";
-			result_str << result[offset2 + i];
-		}
-		// sprintf(stmp, "e%+03d", result_max);
-		result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max << std::noshowpos;
-	}
-
-} else if (format == 'a') {
-	// make result string
-	for (i=result_max; i>=result_min; i--) {
-		if (i == -1) result_str << ".";
-		result_str << result[offset2 + i];
-	}
-}
-
-return result_str.str();
-}
-
-
-	private static get_exponent(x: number): number {
+	private static get_exponent(x: number): bigint {
 		// Perform boundary checks similar to the original C++ approach
-		if (x >= Math.pow(2, 1023)) return 1023;
-		if (x < Math.pow(2, -1074)) return -1075;
+		if (x >= Math.pow(2, 1023)) return 1023n;
+		if (x < Math.pow(2, -1074)) return -1075n;
 
 		// Use absolute value for exponent calculation
 		const absX = Math.abs(x);
 
 		// Compute exponent using log2, then shift to match the behavior of std::frexp
-		const exponent = Math.floor(Math.log2(absX)) + 1;
-		return exponent - 1;
+		const exponent = BigInt(Math.floor(Math.log2(absX)) + 1);
+		return exponent - 1n;
 	}
 
 	private static fasttwosum(a: number, b: number): [number, number] {
@@ -580,4 +224,376 @@ return result_str.str();
 	public formatToString(): string {
 		throw new Error();
 	}
+
+	private static ddtostring(x1:number, x2:number,
+	precision:bigint = 34n,  format:string = 'g',  mode:bigint = 0n) {
+	let i:bigint=0n, j:bigint=0n;
+	let sign:bigint=0n, sign2:bigint=0n, ex1:bigint=0n, ex2:bigint=0n;
+	let absx1:number=0, absx2:number=0;
+
+	if (x1 != x1 || x2 != x2) return "nan";
+
+	sign = DoubleDouble.get_sign_double(x1);
+	absx1 = Math.abs(x1);
+
+	if (absx1 == 0.) {
+	if (sign == -1n) {
+	return "-0";
+} else {
+	return "0";
+}
+}
+
+if (DoubleDouble.isInfinite(absx1)) {
+	if (sign == -1n) {
+		return "-inf";
+	} else {
+		return "inf";
+	}
+}
+
+// get x1 to buf
+
+ex1 = DoubleDouble.get_exponent(absx1);
+
+// add 1-byte margin to add buf2
+
+let buf:bigint[] = new Array(1023 - (-1074) + 2).fill(0n);
+
+let offset = 1074n;
+let emax:bigint=0n, emin:bigint=0n;
+let dtmp:number=0, dtmp2:number=0;
+
+dtmp = absx1;
+dtmp2 = DoubleDouble.ldexp(1., Number(ex1));
+
+for (i=0n; i<=52n; i++) {
+	if (dtmp >= dtmp2) {
+		buf[Number(offset + ex1 - i)] = 1n;
+		dtmp -= dtmp2;
+	} else {
+		buf[Number(offset + ex1 - i)] = 0n;
+	}
+	if (dtmp == 0) {
+		emax = ex1;
+		emin = ex1 - i;
+		break;
+	}
+	dtmp2 /= 2.;
+}
+
+// get x2 to buf2 and add it to buf
+
+let buf2:bigint[] = new Array(1023 - (-1074) + 1).fill(0n);
+let emax2:bigint=0n, emin2:bigint=0n, s:bigint=0n;
+let carry:bigint=0n, tmp:bigint=0n;
+
+sign2 = DoubleDouble.get_sign_double(x2);
+absx2 = Math.abs(x2);
+
+if (absx2 != 0.) {
+	ex2 = DoubleDouble.get_exponent(absx2);
+	dtmp = absx2;
+	dtmp2 = DoubleDouble.ldexp(1., Number(ex2));
+
+	for (i=0n; i<=52n; i++) {
+		if (dtmp >= dtmp2) {
+			buf2[Number( offset + ex2 - i)] = 1n;
+			dtmp -= dtmp2;
+		} else {
+			buf2[Number(offset + ex2 - i)] = 0n;
+		}
+		if (dtmp == 0) {
+			emax2 = ex2;
+			emin2 = ex2 - i;
+			break;
+		}
+		dtmp2 /= 2.;
+	}
+
+	if (sign == sign2)  s = 1n;
+	else s = -1n;
+
+	if (emin > emin2) {
+		for (i=emin2; i<=emin-1n; i++) {
+			buf[Number(offset + i)] = 0n;
+		}
+		emin = emin2;
+	}
+	emax++;
+	buf[Number(offset + emax)] = 0n;
+
+	carry = 0n;
+	for (i=emin2; i<=emax2; i++) {
+		// NOTICE: tmp may become negative
+		tmp = buf[Number(offset + i)] + s * buf2[Number(offset + i)] + carry;
+		//carry = (int)std::floor(tmp / 2.);
+		carry=BigInt(Math.floor(Number(tmp) / 2.));
+		buf[Number(offset + i)] = tmp - carry * 2n;
+	}
+	for (i=emax2+1n; i<=emax; i++) {
+		if (carry == 0n) break;
+		// NOTICE: tmp may become negative
+		tmp = buf[Number(offset + i)] + carry;
+		//carry = (int)std::floor(tmp / 2.);
+		carry=BigInt(Math.floor(Number(tmp) / 2.));
+		buf[Number(offset + i)] = tmp - carry * 2n;
+	}
+	while (buf[Number(offset + emax)] == 0n) {
+		emax--;
+	}
+}
+
+
+if (emin > 0n) {
+	for (i=0n; i<emin; i++) {
+		buf[Number(offset + i)] = 0n;
+	}
+	emin = 0n;
+}
+
+if (emax < 0n) {
+	for (i=emax + 1n; i<=0; i++) {
+		buf[Number(offset + i)] = 0n;
+	}
+	emax = 0n;
+}
+
+//std::list<int> result1, result2;
+		let result1:Dequeue<bigint> =new Dequeue<bigint>();
+let result2:Dequeue<bigint> =new Dequeue<bigint>();
+
+
+let result_max:bigint=0n, result_min:bigint=0n, m:bigint=0n, pm:bigint=0n;
+
+result_max = -1n;
+
+while (emax >= 0) {
+	if (emax >= 17n) m= 5n;
+	else if (emax >= 14n) m = 4n;
+	else if (emax >= 10n) m = 3n;
+	else if (emax >= 7n) m = 2n;
+	else  m = 1n;
+
+	pm = 1n;
+	for (i=0n; i<m; i++) pm *= 10n;
+
+	carry = 0n;
+	for (i=emax; i>=0; i--) {
+		tmp = carry * 2n + buf[Number(offset + i)];
+		buf[Number(offset + i)] = tmp / pm;
+		carry = tmp % pm;
+	}
+
+	for (i=0n; i<m; i++) {
+		result_max++;
+		result1.push(carry  % 10n);
+		carry /= 10n;
+	}
+
+	while (emax >= 0 && buf[Number(offset + emax)] == 0n) {
+		emax--;
+	}
+}
+
+result_min = 0n;
+
+
+while (emin < 0) {
+	m = DoubleDouble.min(8n, -emin);
+	pm = 1n;
+	for (i=0n; i<m; i++) pm *= 10n;
+
+	carry = 0n;
+	for (i=emin; i<=-1; i++) {
+		tmp = buf[Number(offset + i)] * pm + carry;
+		buf[Number(offset + i)] = tmp % 2n;
+		carry = tmp / 2n;
+	}
+
+	for (i=0n; i<m; i++) {
+		result_min--;
+		pm /= 10n;
+		result2.push(carry / pm);
+		carry %= pm;
+	}
+
+	while (emin < 0 && buf[Number(offset + emin)] == 0n) {
+		emin++;
+	}
+}
+
+//let buf2:bigint[] = new Array(1023 - (-1074) + 1).fill(0n);
+let result:bigint[]=new Array(Number(result_max - result_min + 1n + 2n)).fill(0n);
+let offset2:bigint=0n;
+
+function error():bigint{
+	throw new Error();
+}
+
+// add 1byte margin to both ends of array
+//result.resize(result_max - result_min + 1 + 2);
+offset2 = - result_min + 1n;
+for (i=0n; i<=result_max; i++) {
+	result[Number(offset2 + i)] = result1.get_value(0)??error();
+	result1.shift();
+}
+for (i=-1n; i>=result_min; i--) {
+	result[Number(offset2 + i)] = result2.get_value(0)??error();
+	result2.shift();
+}
+
+
+for (i=result_min; i<=result_max; i++) {
+	std::cout << i << ':' << result[offset2 + i] << "\n";
+}
+
+std::ostringstream result_str;
+
+if (sign == 1) {
+	result_str << "";
+} else {
+	result_str << "-";
+}
+
+if (format == 'f') {
+	// round to precision after decimal point
+	if (-(precision+1) >= result_min) {
+		result_min = -precision;
+		tmp = result[offset2 + result_min - 1];
+		if ((mode == 1 && sign == 1) || (mode == -1 && sign == -1) || (mode == 0 && tmp >= 5)) {
+			result[offset2 + result_max + 1] = 0;
+			result_max++;
+			for (i=result_min; i<=result_max; i++) {
+				result[offset2 + i]++;
+				if (result[offset2 + i] != 10) break;
+				result[offset2 + i] = 0;
+			}
+			if (result[offset2 + result_max] == 0) {
+				result_max--;
+			}
+		}
+	}
+
+	// delete zeros of tail
+	while (result_min < 0 && result[offset2 + result_min] == 0) {
+		result_min++;
+	}
+
+	// make result string
+	for (i=result_max; i>=result_min; i--) {
+		if (i == -1) result_str << ".";
+		result_str << result[offset2 + i];
+	}
+
+} else if (format == 'e') {
+	// delete zeros of head
+	while (result[offset2 + result_max] == 0) {
+		result_max--;
+	}
+
+	// round to precision
+	if (result_max-precision-1 >= result_min) {
+		result_min = result_max - precision;
+		tmp = result[offset2 + result_min - 1];
+		if ((mode == 1 && sign == 1) || (mode == -1 && sign == -1) || (mode == 0 && tmp >= 5)) {
+			result[offset2 + result_max + 1] = 0;
+			result_max++;
+			for (i=result_min; i<=result_max; i++) {
+				result[offset2 + i]++;
+				if (result[offset2 + i] != 10) break;
+				result[offset2 + i] = 0;
+			}
+			if (result[offset2 + result_max] == 0) {
+				result_max--;
+			} else {
+				result_min++;
+			}
+		}
+	}
+
+	// delete zeros of tail
+	while (result[offset2 + result_min] == 0) {
+		result_min++;
+	}
+
+	// make result string
+	for (i=result_max; i>=result_min; i--) {
+		if (i == result_max -1) result_str << ".";
+		result_str << result[offset2 + i];
+	}
+	// sprintf(stmp, "e%+03d", result_max);
+	result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max << std::noshowpos;
+
+} else if (format == 'g') {
+	// delete zeros of head
+	while (result[offset2 + result_max] == 0) {
+		result_max--;
+	}
+
+	// round to precision
+	if (result_max-precision >= result_min) {
+		result_min = result_max - precision + 1;
+		tmp = result[offset2 + result_min - 1];
+		if ((mode == 1 && sign == 1) || (mode == -1 && sign == -1) || (mode == 0 && tmp >= 5)) {
+			result[offset2 + result_max + 1] = 0;
+			result_max++;
+			for (i=result_min; i<=result_max; i++) {
+				result[offset2 + i]++;
+				if (result[offset2 + i] != 10) break;
+				result[offset2 + i] = 0;
+			}
+			if (result[offset2 + result_max] == 0) {
+				result_max--;
+			} else {
+				result_min++;
+			}
+		}
+	}
+
+	if (-4 <= result_max && result_max <= precision -1) {
+		// use 'f' like format
+
+		// delete zeros of tail
+		while (result_min < 0 && result[offset2 + result_min] == 0) {
+			result_min++;
+		}
+
+		if (result_max < 0) {
+			result_max = 0;
+		}
+
+		// make result string
+		for (i=result_max; i>=result_min; i--) {
+			if (i == -1) result_str << ".";
+			result_str << result[offset2 + i];
+		}
+
+	} else {
+		// use 'e' like format
+
+		// delete zeros of tail
+		while (result[offset2 + result_min] == 0) {
+			result_min++;
+		}
+
+		// make result string
+		for (i=result_max; i>=result_min; i--) {
+			if (i == result_max -1) result_str << ".";
+			result_str << result[offset2 + i];
+		}
+		// sprintf(stmp, "e%+03d", result_max);
+		result_str << "e" << std::internal << std::showpos << std::setfill('0') << std::setw(3) << result_max << std::noshowpos;
+	}
+
+} else if (format == 'a') {
+	// make result string
+	for (i=result_max; i>=result_min; i--) {
+		if (i == -1) result_str << ".";
+		result_str << result[offset2 + i];
+	}
+}
+
+return result_str.str();
+}
 }
