@@ -133,6 +133,41 @@ test('DoubleDouble toString', () => {
 });
 
 test('DoubleDouble toString with NaN', () => {
+	const dd = new DoubleDouble(NaN, 2.0);
+	expect(dd.toString()).toBe('nan');
+});
+
+test('DoubleDouble toString with Infinity', () => {
+	const dd = new DoubleDouble(Infinity, 2.0);
+	expect(dd.toString()).toBe('inf');
+});
+
+test('DoubleDouble toString with negative Infinity', () => {
+	const dd = new DoubleDouble(-Infinity, 2.0);
+	expect(dd.toString()).toBe('-inf');
+});
+
+test('DoubleDouble toString with zero', () => {
+	const dd = new DoubleDouble(0, 0);
+	expect(dd.toString()).toBe('0');
+});
+
+test('DoubleDouble toString with negative zero', () => {
+	const dd = new DoubleDouble(-0, 0);
+	expect(dd.toString()).toBe('-0');
+});
+
+test('DoubleDouble toString with very small values', () => {
+	const dd = new DoubleDouble(1.0e-15, 0);
+	expect(dd.toString()).toBe('1.000000000000000077705399876661079e-15');
+});
+
+test('DoubleDouble toString with very large values', () => {
+	const dd = new DoubleDouble(1.0e15, 0);
+	expect(dd.toString()).toBe('1000000000000000');
+});
+
+test('DoubleDouble.ddstring with NaN', () => {
 	let dd = new DoubleDouble(NaN, 2.0);
 	let result = DoubleDouble.ddtostring(dd.a1, dd.a2);
 	expect(result.join('')).toBe('nan');
@@ -140,23 +175,23 @@ test('DoubleDouble toString with NaN', () => {
 	expect(DoubleDouble.ddtostring(1.0, NaN).join('')).toBe('nan');
 });
 
-test('DoubleDouble toString with Infinity', () => {
+test('DoubleDouble.ddstring with Infinity', () => {
 	expect(DoubleDouble.ddtostring(Infinity, 0).join('')).toBe('inf');
 });
 
-test('DoubleDouble toString with negative Infinity', () => {
+test('DoubleDouble.ddstring with negative Infinity', () => {
 	expect(DoubleDouble.ddtostring(-Infinity, 0).join('')).toBe('-inf');
 });
 
-test('DoubleDouble toString with zero', () => {
+test('DoubleDouble.ddstring with zero', () => {
 	expect(DoubleDouble.ddtostring(0, 0).join('')).toBe('0');
 });
 
-test('DoubleDouble toString with negative zero', () => {
+test('DoubleDouble.ddstring with negative zero', () => {
 	expect(DoubleDouble.ddtostring(-0, 0).join('')).toBe('-0');
 });
 
-test('DoubleDouble toString with very small values', () => {
+test('DoubleDouble.ddstring with very small values', () => {
 	expect(DoubleDouble.ddtostring(1.0e-15, 0).join('')).toBe(
 		'1.000000000000000077705399876661079e-15',
 	);
