@@ -19,14 +19,14 @@ export class DoubleDouble {
 		this.a2 = a2;
 	}
 
-	static fasttwosum(a: number, b: number): [number, number] {
+	private static fasttwosum(a: number, b: number): [number, number] {
 		let x = a + b;
 		let tmp = x - a;
 		let y = b - tmp;
 		return [x, y];
 	}
 
-	static twosum(a: number, b: number): [number, number] {
+	private static twosum(a: number, b: number): [number, number] {
 		let x = a + b;
 		let tmp = 0;
 		let y = 0;
@@ -42,7 +42,7 @@ export class DoubleDouble {
 		return [x, y];
 	}
 
-	static twoproduct(a: number, b: number): [number, number] {
+	private static twoproduct(a: number, b: number): [number, number] {
 		const th = ldexp(1, 996);
 		const c1 = ldexp(1, -28);
 		const c2 = ldexp(1, 28);
@@ -83,7 +83,7 @@ export class DoubleDouble {
 		return [x, y];
 	}
 
-	static split(a: number): [number, number] {
+	private static split(a: number): [number, number] {
 		const sigma = (1 << 27) + 1;
 
 		let tmp = a * sigma;
@@ -93,23 +93,23 @@ export class DoubleDouble {
 		return [x, y];
 	}
 
+	private static isInfinite(value: number): boolean {
+		return Math.abs(value) == Infinity;
+	}
+
 	public add(other: DoubleDouble): DoubleDouble {
 		//double z1, z2, z3, z4;
 
 		let [z1, z2] = DoubleDouble.twosum(this.a1, other.a1);
 
-		if (Number.isNaN(z1) || Number.isNaN(z2)) {
-			return new DoubleDouble(NaN, NaN);
-		}
-
-		if (!Number.isFinite(z1)) {
+		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
 		}
 
 		z2 += this.a2 + other.a2;
 		let [z3, z4] = DoubleDouble.twosum(z1, z2);
 
-		if (!Number.isFinite(z3)) {
+		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
 		}
 
@@ -119,18 +119,14 @@ export class DoubleDouble {
 	public sub(other: DoubleDouble): DoubleDouble {
 		let [z1, z2] = DoubleDouble.twosum(this.a1, -other.a1);
 
-		if (Number.isNaN(z1) || Number.isNaN(z2)) {
-			return new DoubleDouble(NaN, NaN);
-		}
-
-		if (!Number.isFinite(z1)) {
+		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
 		}
 
 		z2 += this.a2 - other.a2;
 		let [z3, z4] = DoubleDouble.twosum(z1, z2);
 
-		if (!Number.isFinite(z3)) {
+		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
 		}
 
@@ -142,11 +138,7 @@ export class DoubleDouble {
 
 		let [z1, z2] = DoubleDouble.twoproduct(this.a1, other.a1);
 
-		if (Number.isNaN(z1) || Number.isNaN(z2)) {
-			return new DoubleDouble(NaN, NaN);
-		}
-
-		if (!Number.isFinite(z1)) {
+		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
 		}
 
@@ -155,7 +147,7 @@ export class DoubleDouble {
 		z2 += this.a1 * other.a2 + this.a2 * other.a1 + this.a2 * other.a2;
 
 		let [z3, z4] = DoubleDouble.twosum(z1, z2);
-		if (!Number.isFinite(z3)) {
+		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
 		}
 

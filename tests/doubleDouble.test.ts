@@ -50,6 +50,14 @@ test('DoubleDouble NaN add', () => {
 	expect(result.a2).toBeNaN();
 });
 
+test('DoubleDouble Inf add', () => {
+	const dd1 = new DoubleDouble(Infinity, 0);
+	const dd2 = new DoubleDouble(3.0, 0);
+	const result = dd1.add(dd2);
+	expect(result.a1).toBe(Infinity);
+	expect(result.a2).toBe(0);
+});
+
 test('DoubleDouble sub', () => {
 	const dd1 = new DoubleDouble(5.0, 0);
 	const dd2 = new DoubleDouble(3.0, 0);
@@ -63,6 +71,14 @@ test('DoubleDouble NaN sub', () => {
 	const result = dd1.sub(dd2);
 	expect(result.a1).toBeNaN();
 	expect(result.a2).toBeNaN();
+});
+
+test('DoubleDouble Inf sub', () => {
+	const dd1 = new DoubleDouble(Infinity, 0);
+	const dd2 = new DoubleDouble(3.0, 0);
+	const result = dd1.sub(dd2);
+	expect(result.a1).toBe(Infinity);
+	expect(result.a2).toBe(0);
 });
 
 test('DoubleDouble mul', () => {
@@ -80,6 +96,14 @@ test('DoubleDouble NaN mul', () => {
 	expect(result.a2).toBeNaN();
 });
 
+test('DoubleDouble Inf mul', () => {
+	const dd1 = new DoubleDouble(Infinity, 0);
+	const dd2 = new DoubleDouble(3.0, 0);
+	const result = dd1.mul(dd2);
+	expect(result.a1).toBe(Infinity);
+	expect(result.a2).toBe(0);
+});
+
 test('DoubleDouble div', () => {
 	const dd1 = new DoubleDouble(6.0, 0);
 	const dd2 = new DoubleDouble(3.0, 0);
@@ -93,6 +117,14 @@ test('DoubleDouble NaN div', () => {
 	const result = dd1.div(dd2);
 	expect(result.a1).toBeNaN();
 	expect(result.a2).toBeNaN();
+});
+
+test('DoubleDouble Inf div', () => {
+	const dd1 = new DoubleDouble(Infinity, 0);
+	const dd2 = new DoubleDouble(3.0, 0);
+	const result = dd1.div(dd2);
+	expect(result.a1).toBe(Infinity);
+	expect(result.a2).toBe(0);
 });
 
 test('DoubleDouble toString', () => {
