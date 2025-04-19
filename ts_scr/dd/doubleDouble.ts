@@ -155,7 +155,34 @@ export class DoubleDouble {
 	}
 
 	public div(other: DoubleDouble): DoubleDouble {
-		throw new Error();
+		let z2 = 0.0;
+
+		let z1 = this.a1 / other.a1;
+		if (DoubleDouble.isInfinite(z1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		if (DoubleDouble.isInfinite(other.a1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		let [z3, z4] = DoubleDouble.twoproduct(-z1, other.a1);
+		if (DoubleDouble.isInfinite(z3)) {
+			[z3, z4] = DoubleDouble.twoproduct(-z1, other.a1 * 0.5);
+			z2 =
+				(z3 + this.a1 * 0.5 - z1 * (other.a2 * 0.5) + this.a2 * 0.5 + z4) /
+				(other.a1 * 0.5);
+		} else {
+			// z2 = ((((z3 + x.a1) - z1 * y.a2) + x.a2) + z4) / (y.a1 + y.a2);
+			z2 = (z3 + this.a1 - z1 * other.a2 + this.a2 + z4) / other.a1;
+		}
+
+		[z3, z4] = DoubleDouble.twosum(z1, z2);
+		if (DoubleDouble.isInfinite(z3)) {
+			return new DoubleDouble(z3, 0);
+		}
+
+		return new DoubleDouble(z3, z4);
 	}
 
 	public toString(): string {
