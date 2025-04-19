@@ -133,7 +133,35 @@ test('DoubleDouble toString', () => {
 });
 
 test('DoubleDouble toString with NaN', () => {
-	const dd = new DoubleDouble(1.5, 2.0);
+	let dd = new DoubleDouble(NaN, 2.0);
 	let result = DoubleDouble.ddtostring(dd.a1, dd.a2);
-	console.log(result);
+	expect(result.join('')).toBe('nan');
+
+	expect(DoubleDouble.ddtostring(1.0, NaN).join('')).toBe('nan');
+});
+
+test('DoubleDouble toString with Infinity', () => {
+	expect(DoubleDouble.ddtostring(Infinity, 0).join('')).toBe('inf');
+});
+
+test('DoubleDouble toString with negative Infinity', () => {
+	expect(DoubleDouble.ddtostring(-Infinity, 0).join('')).toBe('-inf');
+});
+
+test('DoubleDouble toString with zero', () => {
+	expect(DoubleDouble.ddtostring(0, 0).join('')).toBe('0');
+});
+
+test('DoubleDouble toString with negative zero', () => {
+	expect(DoubleDouble.ddtostring(-0, 0).join('')).toBe('-0');
+});
+
+test('DoubleDouble toString with very small values', () => {
+	expect(DoubleDouble.ddtostring(1.0e-15, 0).join('')).toBe(
+		'1.000000000000000077705399876661079e-15',
+	);
+});
+
+test('DoubleDouble toString with very large values', () => {
+	expect(DoubleDouble.ddtostring(1.0e15, 0).join('')).toBe('1000000000000000');
 });

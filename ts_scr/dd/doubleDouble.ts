@@ -230,7 +230,7 @@ export class DoubleDouble {
 		precision: bigint = 34n,
 		format: string = 'g',
 		mode: bigint = 0n,
-	) {
+	): string[] {
 		let i: bigint = 0n,
 			j: bigint = 0n;
 		let sign: bigint = 0n,
@@ -240,24 +240,24 @@ export class DoubleDouble {
 		let absx1: number = 0,
 			absx2: number = 0;
 
-		if (x1 != x1 || x2 != x2) return 'nan';
+		if (x1 != x1 || x2 != x2) return ['nan'];
 
 		sign = DoubleDouble.get_sign_double(x1);
 		absx1 = Math.abs(x1);
 
 		if (absx1 == 0) {
 			if (sign == -1n) {
-				return '-0';
+				return ['-0'];
 			} else {
-				return '0';
+				return ['0'];
 			}
 		}
 
 		if (DoubleDouble.isInfinite(absx1)) {
 			if (sign == -1n) {
-				return '-inf';
+				return ['-inf'];
 			} else {
-				return 'inf';
+				return ['inf'];
 			}
 		}
 
