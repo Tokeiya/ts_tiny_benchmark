@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { DoubleDouble } from '../ts_scr/dd/doubleDouble.js';
+import { DoubleDouble } from '../ts_src/dd/doubleDouble.js';
 
 test('DoubleDouble constructor', () => {
 	const dd = new DoubleDouble(1.0, 2.0);
@@ -169,34 +169,36 @@ test('DoubleDouble toString with very large values', () => {
 
 test('DoubleDouble.ddstring with NaN', () => {
 	let dd = new DoubleDouble(NaN, 2.0);
-	let result = DoubleDouble.ddtostring(dd.a1, dd.a2);
+	let result = DoubleDouble.doubleDoubleToString(dd.a1, dd.a2);
 	expect(result.join('')).toBe('nan');
 
-	expect(DoubleDouble.ddtostring(1.0, NaN).join('')).toBe('nan');
+	expect(DoubleDouble.doubleDoubleToString(1.0, NaN).join('')).toBe('nan');
 });
 
 test('DoubleDouble.ddstring with Infinity', () => {
-	expect(DoubleDouble.ddtostring(Infinity, 0).join('')).toBe('inf');
+	expect(DoubleDouble.doubleDoubleToString(Infinity, 0).join('')).toBe('inf');
 });
 
 test('DoubleDouble.ddstring with negative Infinity', () => {
-	expect(DoubleDouble.ddtostring(-Infinity, 0).join('')).toBe('-inf');
+	expect(DoubleDouble.doubleDoubleToString(-Infinity, 0).join('')).toBe('-inf');
 });
 
 test('DoubleDouble.ddstring with zero', () => {
-	expect(DoubleDouble.ddtostring(0, 0).join('')).toBe('0');
+	expect(DoubleDouble.doubleDoubleToString(0, 0).join('')).toBe('0');
 });
 
 test('DoubleDouble.ddstring with negative zero', () => {
-	expect(DoubleDouble.ddtostring(-0, 0).join('')).toBe('-0');
+	expect(DoubleDouble.doubleDoubleToString(-0, 0).join('')).toBe('-0');
 });
 
 test('DoubleDouble.ddstring with very small values', () => {
-	expect(DoubleDouble.ddtostring(1.0e-15, 0).join('')).toBe(
+	expect(DoubleDouble.doubleDoubleToString(1.0e-15, 0).join('')).toBe(
 		'1.000000000000000077705399876661079e-15',
 	);
 });
 
 test('DoubleDouble toString with very large values', () => {
-	expect(DoubleDouble.ddtostring(1.0e15, 0).join('')).toBe('1000000000000000');
+	expect(DoubleDouble.doubleDoubleToString(1.0e15, 0).join('')).toBe(
+		'1000000000000000',
+	);
 });

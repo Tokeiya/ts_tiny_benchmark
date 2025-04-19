@@ -1,7 +1,7 @@
 import { ldexp } from './share.js';
 import { isNumberObject } from 'node:util/types';
 
-export function fastToSum(a: numbZer, b: number): [number, number] {
+export function fastToSum(a: number, b: number): [number, number] {
 	let x = a + b;
 	let tmp = x - a;
 	let y = b - tmp;
@@ -10,8 +10,8 @@ export function fastToSum(a: numbZer, b: number): [number, number] {
 
 export function twoSum(a: number, b: number): [number, number] {
 	let x = a + b;
-	let tmp: number = 0;
-	let y: number = 0;
+	let tmp: number;
+	let y: number;
 
 	if (Math.abs(a) > Math.abs(b)) {
 		tmp = x - a;
@@ -26,7 +26,7 @@ export function twoSum(a: number, b: number): [number, number] {
 
 export function split(a: number): [number, number] {
 	let sigma: number = (1 << 27) + 1;
-	let tmp = 0;
+	let tmp: number;
 
 	tmp = a * sigma;
 	let x = tmp - (tmp - a);

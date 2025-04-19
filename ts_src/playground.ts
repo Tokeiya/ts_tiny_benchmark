@@ -1,3 +1,3 @@
-import { ddtostring } from './conv-dd.js';
+import { Mode } from './dd/mode.js';
 
-console.log((1 << 27) + 1);
+let a: number = Number(Mode.Down);

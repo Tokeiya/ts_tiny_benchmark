@@ -1,5 +1,7 @@
 import { ldexp } from './share.js';
 import { Dequeue } from '../dequeue.js';
+import { Format } from './format.js';
+import { Mode } from './mode.js';
 
 export class DoubleDouble {
 	public readonly a1: number;
@@ -15,17 +17,17 @@ export class DoubleDouble {
 	}
 
 	public static fromBigint(value: bigint): DoubleDouble {
-		let a1 = Number(value);
-		let a2 = value - BigInt(a1);
+		const a1 = Number(value);
+		const a2 = value - BigInt(a1);
 		return new DoubleDouble(a1, Number(a2));
 	}
 
-	public static ddtostring(
+	public static doubleDoubleToString(
 		x1: number,
 		x2: number,
 		precision: bigint = 34n,
-		format: string = 'g',
-		mode: bigint = 0n,
+		format: Format = Format.General,
+		mode: Mode = Mode.Nearest,
 	): string[] {
 		let i: bigint = 0n;
 		let sign: bigint = 0n;
@@ -58,13 +60,13 @@ export class DoubleDouble {
 
 		// get x1 to buf
 
-		ex1 = DoubleDouble.get_exponent(absx1);
+		ex1 = DoubleDouble.getExponent(absx1);
 
 		// add 1-byte margin to add buf2
 
-		let buf: bigint[] = new Array(1023 - -1074 + 2).fill(0n);
+		const buf: bigint[] = new Array(1023 - -1074 + 2).fill(0n);
 
-		let offset = 1074n;
+		const offset = 1074n;
 		let emax: bigint = 0n;
 		let emin: bigint = 0n;
 		let dtmp: number;
@@ -90,7 +92,7 @@ export class DoubleDouble {
 
 		// get x2 to buf2 and add it to buf
 
-		let buf2: bigint[] = new Array(1023 - -1074 + 1).fill(0n);
+		const buf2: bigint[] = new Array(1023 - -1074 + 1).fill(0n);
 		let emax2: bigint = 0n;
 		let emin2: bigint = 0n;
 		let s: bigint = 0n;
@@ -101,7 +103,7 @@ export class DoubleDouble {
 		absx2 = Math.abs(x2);
 
 		if (absx2 != 0) {
-			ex2 = DoubleDouble.get_exponent(absx2);
+			ex2 = DoubleDouble.getExponent(absx2);
 			dtmp = absx2;
 			dtmp2 = DoubleDouble.ldexp(1, Number(ex2));
 
@@ -168,8 +170,8 @@ export class DoubleDouble {
 		}
 
 		//std::list<int> result1, result2;
-		let result1: Dequeue<bigint> = new Dequeue<bigint>();
-		let result2: Dequeue<bigint> = new Dequeue<bigint>();
+		const result1: Dequeue<bigint> = new Dequeue<bigint>();
+		const result2: Dequeue<bigint> = new Dequeue<bigint>();
 
 		let result_max: bigint;
 		let result_min: bigint;
@@ -233,10 +235,9 @@ export class DoubleDouble {
 		}
 
 		//let buf2:bigint[] = new Array(1023 - (-1074) + 1).fill(0n);
-		let result: bigint[] = new Array(
+		const result: bigint[] = new Array(
 			Number(result_max - result_min + 1n + 2n),
 		).fill(0n);
-		let offset2: bigint = 0n;
 
 		function error(): bigint {
 			throw new Error();
@@ -244,7 +245,7 @@ export class DoubleDouble {
 
 		// add 1byte margin to both ends of array
 		//result.resize(result_max - result_min + 1 + 2);
-		offset2 = -result_min + 1n;
+		const offset2: bigint = -result_min + 1n;
 		for (i = 0n; i <= result_max; i++) {
 			result[Number(offset2 + i)] = result1.get_value(0) ?? error();
 			result1.shift();
@@ -255,7 +256,7 @@ export class DoubleDouble {
 		}
 
 		//std::ostringstream result_str;
-		let result_str: string[] = [];
+		const result_str: string[] = [];
 
 		if (sign == 1n) {
 			result_str.push('');
@@ -269,9 +270,9 @@ export class DoubleDouble {
 				result_min = -precision;
 				tmp = result[Number(offset2 + result_min - 1n)];
 				if (
-					(mode == 1n && sign == 1n) ||
-					(mode == -1n && sign == -1n) ||
-					(mode == 0n && tmp >= 5)
+					(mode == Mode.Up && sign == 1n) ||
+					(mode == Mode.Down && sign == -1n) ||
+					(mode == Mode.Nearest && tmp >= 5)
 				) {
 					result[Number(offset2 + result_max + 1n)] = 0n;
 					result_max++;
@@ -296,7 +297,7 @@ export class DoubleDouble {
 				if (i == -1n) result_str.push('.');
 				result_str.push(result[Number(offset2 + i)].toString());
 			}
-		} else if (format == 'e') {
+		} else if (format == Format.Exponential) {
 			// delete zeros of head
 			while (result[Number(offset2 + result_max)] == 0n) {
 				result_max--;
@@ -307,9 +308,9 @@ export class DoubleDouble {
 				result_min = result_max - precision;
 				tmp = result[Number(offset2 + result_min - 1n)];
 				if (
-					(mode == 1n && sign == 1n) ||
-					(mode == -1n && sign == -1n) ||
-					(mode == 0n && tmp >= 5n)
+					(mode == Mode.Up && sign == 1n) ||
+					(mode == Mode.Down && sign == -1n) ||
+					(mode == Mode.Nearest && tmp >= 5n)
 				) {
 					result[Number(offset2 + result_max + 1n)] = 0n;
 					result_max++;
@@ -339,7 +340,7 @@ export class DoubleDouble {
 			// sprintf(stmp, "e%+03d", result_max);
 			result_str.push('e');
 			result_str.push(result_max.toString());
-		} else if (format == 'g') {
+		} else if (format == Format.General) {
 			// delete zeros of head
 			while (result[Number(offset2 + result_max)] == 0n) {
 				result_max--;
@@ -350,9 +351,9 @@ export class DoubleDouble {
 				result_min = result_max - precision + 1n;
 				tmp = result[Number(offset2 + result_min - 1n)];
 				if (
-					(mode == 1n && sign == 1n) ||
-					(mode == -1n && sign == -1n) ||
-					(mode == 0n && tmp >= 5n)
+					(mode == Mode.Up && sign == 1n) ||
+					(mode == Mode.Down && sign == -1n) ||
+					(mode == Mode.Nearest && tmp >= 5n)
 				) {
 					result[Number(offset2 + result_max + 1n)] = 0n;
 					result_max++;
@@ -403,7 +404,7 @@ export class DoubleDouble {
 				result_str.push('e');
 				result_str.push(result_max.toString());
 			}
-		} else if (format == 'a') {
+		} else if (format == Format.All) {
 			// make result string
 			for (i = result_max; i >= result_min; i--) {
 				if (i == -1n) result_str.push('.');
@@ -432,7 +433,7 @@ export class DoubleDouble {
 		return mantissa * Math.pow(2, exponent);
 	}
 
-	private static get_exponent(x: number): bigint {
+	private static getExponent(x: number): bigint {
 		// Perform boundary checks similar to the original C++ approach
 		if (x >= Math.pow(2, 1023)) return 1023n;
 		if (x < Math.pow(2, -1074)) return -1075n;
@@ -445,8 +446,8 @@ export class DoubleDouble {
 		return exponent - 1n;
 	}
 
-	private static twosum(a: number, b: number): [number, number] {
-		let x = a + b;
+	private static twoSum(a: number, b: number): [number, number] {
+		const x = a + b;
 		let tmp;
 		let y;
 
@@ -461,7 +462,7 @@ export class DoubleDouble {
 		return [x, y];
 	}
 
-	private static twoproduct(a: number, b: number): [number, number] {
+	private static twoProduct(a: number, b: number): [number, number] {
 		const th = ldexp(1, 996);
 		const c1 = ldexp(1, -28);
 		const c2 = ldexp(1, 28);
@@ -469,14 +470,14 @@ export class DoubleDouble {
 
 		//		double na, nb, a1, a2, b1, b2;
 
-		let x = a * b;
+		const x = a * b;
 
 		if (!Number.isFinite(a)) {
 			return [x, 0];
 		}
 
-		let na = 0;
-		let nb = 0;
+		let na;
+		let nb;
 
 		if (Math.abs(a) > th) {
 			na = a * c1;
@@ -489,10 +490,10 @@ export class DoubleDouble {
 			nb = b;
 		}
 
-		let [a1, a2] = DoubleDouble.split(na);
-		let [b1, b2] = DoubleDouble.split(nb);
+		const [a1, a2] = DoubleDouble.split(na);
+		const [b1, b2] = DoubleDouble.split(nb);
 
-		let y = 0;
+		let y;
 		if (Math.abs(x) > th2) {
 			y = (a1 * 0.5 * b1 - x * 0.5) * 2 + a2 * b1 + a1 * b2 + a2 * b2;
 		} else {
@@ -505,9 +506,9 @@ export class DoubleDouble {
 	private static split(a: number): [number, number] {
 		const sigma = (1 << 27) + 1;
 
-		let tmp = a * sigma;
-		let x = tmp - (tmp - a);
-		let y = a - x;
+		const tmp = a * sigma;
+		const x = tmp - (tmp - a);
+		const y = a - x;
 
 		return [x, y];
 	}
@@ -519,14 +520,15 @@ export class DoubleDouble {
 	public add(other: DoubleDouble): DoubleDouble {
 		//double z1, z2, z3, z4;
 
-		let [z1, z2] = DoubleDouble.twosum(this.a1, other.a1);
+		const [z1, _z2] = DoubleDouble.twoSum(this.a1, other.a1);
+		let z2 = _z2;
 
 		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
 		}
 
 		z2 += this.a2 + other.a2;
-		let [z3, z4] = DoubleDouble.twosum(z1, z2);
+		const [z3, z4] = DoubleDouble.twoSum(z1, z2);
 
 		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
@@ -536,14 +538,15 @@ export class DoubleDouble {
 	}
 
 	public sub(other: DoubleDouble): DoubleDouble {
-		let [z1, z2] = DoubleDouble.twosum(this.a1, -other.a1);
+		const [z1, _z2] = DoubleDouble.twoSum(this.a1, -other.a1);
+		let z2 = _z2;
 
 		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
 		}
 
 		z2 += this.a2 - other.a2;
-		let [z3, z4] = DoubleDouble.twosum(z1, z2);
+		const [z3, z4] = DoubleDouble.twoSum(z1, z2);
 
 		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
@@ -555,7 +558,8 @@ export class DoubleDouble {
 	public mul(other: DoubleDouble): DoubleDouble {
 		//double z1, z2, z3, z4;
 
-		let [z1, z2] = DoubleDouble.twoproduct(this.a1, other.a1);
+		const [z1, _z2] = DoubleDouble.twoProduct(this.a1, other.a1);
+		let z2 = _z2;
 
 		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
@@ -565,7 +569,7 @@ export class DoubleDouble {
 		z2 += this.a1 * other.a2 + this.a2 * other.a1;
 		z2 += this.a1 * other.a2 + this.a2 * other.a1 + this.a2 * other.a2;
 
-		let [z3, z4] = DoubleDouble.twosum(z1, z2);
+		const [z3, z4] = DoubleDouble.twoSum(z1, z2);
 		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
 		}
@@ -576,7 +580,7 @@ export class DoubleDouble {
 	public div(other: DoubleDouble): DoubleDouble {
 		let z2 = 0.0;
 
-		let z1 = this.a1 / other.a1;
+		const z1 = this.a1 / other.a1;
 		if (DoubleDouble.isInfinite(z1)) {
 			return new DoubleDouble(z1, 0);
 		}
@@ -585,9 +589,9 @@ export class DoubleDouble {
 			return new DoubleDouble(z1, 0);
 		}
 
-		let [z3, z4] = DoubleDouble.twoproduct(-z1, other.a1);
+		let [z3, z4] = DoubleDouble.twoProduct(-z1, other.a1);
 		if (DoubleDouble.isInfinite(z3)) {
-			[z3, z4] = DoubleDouble.twoproduct(-z1, other.a1 * 0.5);
+			[z3, z4] = DoubleDouble.twoProduct(-z1, other.a1 * 0.5);
 			z2 =
 				(z3 + this.a1 * 0.5 - z1 * (other.a2 * 0.5) + this.a2 * 0.5 + z4) /
 				(other.a1 * 0.5);
@@ -595,7 +599,7 @@ export class DoubleDouble {
 			z2 = (z3 + this.a1 - z1 * other.a2 + this.a2 + z4) / other.a1;
 		}
 
-		[z3, z4] = DoubleDouble.twosum(z1, z2);
+		[z3, z4] = DoubleDouble.twoSum(z1, z2);
 		if (DoubleDouble.isInfinite(z3)) {
 			return new DoubleDouble(z3, 0);
 		}
@@ -604,7 +608,13 @@ export class DoubleDouble {
 	}
 
 	public toString(): string {
-		let str = DoubleDouble.ddtostring(this.a1, this.a2, 34n, 'g', 0n);
+		const str = DoubleDouble.doubleDoubleToString(
+			this.a1,
+			this.a2,
+			34n,
+			Format.General,
+			Mode.Nearest,
+		);
 		return str.join('');
 	}
 

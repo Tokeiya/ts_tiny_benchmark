@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { get_exponent, get_sign_double } from '../scr/conv-dd.js';
+import { get_exponent, get_sign_double } from '../ts_src/conv-dd.js';
 
 test('get_sign_double', () => {
 	expect(get_sign_double(0.0)).toBe(1);
