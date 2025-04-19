@@ -5,10 +5,11 @@ export class DoubleDouble {
 	public readonly a1: number;
 	public readonly a2: number;
 
-	private static min(a: bigint, b: bigint): bigint {
-		if (a < b) return a;
-		else return b;
+	public constructor(a1: number, a2: number) {
+		this.a1 = a1;
+		this.a2 = a2;
 	}
+
 	public static fromNumbers(value: number): DoubleDouble {
 		return new DoubleDouble(value, 0);
 	}
@@ -19,204 +20,6 @@ export class DoubleDouble {
 		return new DoubleDouble(a1, Number(a2));
 	}
 
-	public constructor(a1: number, a2: number) {
-		this.a1 = a1;
-		this.a2 = a2;
-	}
-
-	private static get_sign_double(x: number): bigint {
-		if (x == 0) {
-			x = 1 / x;
-		}
-
-		if (x > 0) return 1n;
-		else return -1n;
-	}
-
-	private static ldexp(mantissa: number, exponent: number): number {
-		return mantissa * Math.pow(2, exponent);
-	}
-
-	private static get_exponent(x: number): bigint {
-		// Perform boundary checks similar to the original C++ approach
-		if (x >= Math.pow(2, 1023)) return 1023n;
-		if (x < Math.pow(2, -1074)) return -1075n;
-
-		// Use absolute value for exponent calculation
-		const absX = Math.abs(x);
-
-		// Compute exponent using log2, then shift to match the behavior of std::frexp
-		const exponent = BigInt(Math.floor(Math.log2(absX)) + 1);
-		return exponent - 1n;
-	}
-
-	private static twosum(a: number, b: number): [number, number] {
-		let x = a + b;
-		let tmp = 0;
-		let y = 0;
-
-		if (Math.abs(a) > Math.abs(b)) {
-			tmp = x - a;
-			y = b - tmp;
-		} else {
-			tmp = x - b;
-			y = a - tmp;
-		}
-
-		return [x, y];
-	}
-
-	private static twoproduct(a: number, b: number): [number, number] {
-		const th = ldexp(1, 996);
-		const c1 = ldexp(1, -28);
-		const c2 = ldexp(1, 28);
-		const th2 = ldexp(1, 1023);
-
-		//		double na, nb, a1, a2, b1, b2;
-
-		let x = a * b;
-
-		if (!Number.isFinite(a)) {
-			return [x, 0];
-		}
-
-		let na = 0;
-		let nb = 0;
-
-		if (Math.abs(a) > th) {
-			na = a * c1;
-			nb = b * c2;
-		} else if (Math.abs(b) > th) {
-			na = a * c2;
-			nb = b * c1;
-		} else {
-			na = a;
-			nb = b;
-		}
-
-		let [a1, a2] = DoubleDouble.split(na);
-		let [b1, b2] = DoubleDouble.split(nb);
-
-		let y = 0;
-		if (Math.abs(x) > th2) {
-			y = (a1 * 0.5 * b1 - x * 0.5) * 2 + a2 * b1 + a1 * b2 + a2 * b2;
-		} else {
-			y = a1 * b1 - x + a2 * b1 + a1 * b2 + a2 * b2;
-		}
-
-		return [x, y];
-	}
-
-	private static split(a: number): [number, number] {
-		const sigma = (1 << 27) + 1;
-
-		let tmp = a * sigma;
-		let x = tmp - (tmp - a);
-		let y = a - x;
-
-		return [x, y];
-	}
-
-	private static isInfinite(value: number): boolean {
-		return Math.abs(value) == Infinity;
-	}
-
-	public add(other: DoubleDouble): DoubleDouble {
-		//double z1, z2, z3, z4;
-
-		let [z1, z2] = DoubleDouble.twosum(this.a1, other.a1);
-
-		if (DoubleDouble.isInfinite(z1)) {
-			return new DoubleDouble(z1, 0);
-		}
-
-		z2 += this.a2 + other.a2;
-		let [z3, z4] = DoubleDouble.twosum(z1, z2);
-
-		if (DoubleDouble.isInfinite(z3)) {
-			return new DoubleDouble(z3, 0);
-		}
-
-		return new DoubleDouble(z3, z4);
-	}
-
-	public sub(other: DoubleDouble): DoubleDouble {
-		let [z1, z2] = DoubleDouble.twosum(this.a1, -other.a1);
-
-		if (DoubleDouble.isInfinite(z1)) {
-			return new DoubleDouble(z1, 0);
-		}
-
-		z2 += this.a2 - other.a2;
-		let [z3, z4] = DoubleDouble.twosum(z1, z2);
-
-		if (DoubleDouble.isInfinite(z3)) {
-			return new DoubleDouble(z3, 0);
-		}
-
-		return new DoubleDouble(z3, z4);
-	}
-
-	public mul(other: DoubleDouble): DoubleDouble {
-		//double z1, z2, z3, z4;
-
-		let [z1, z2] = DoubleDouble.twoproduct(this.a1, other.a1);
-
-		if (DoubleDouble.isInfinite(z1)) {
-			return new DoubleDouble(z1, 0);
-		}
-
-		// x.a2 * y.a2 is very small but sometimes important
-		z2 += this.a1 * other.a2 + this.a2 * other.a1;
-		z2 += this.a1 * other.a2 + this.a2 * other.a1 + this.a2 * other.a2;
-
-		let [z3, z4] = DoubleDouble.twosum(z1, z2);
-		if (DoubleDouble.isInfinite(z3)) {
-			return new DoubleDouble(z3, 0);
-		}
-
-		return new DoubleDouble(z3, z4);
-	}
-
-	public div(other: DoubleDouble): DoubleDouble {
-		let z2 = 0.0;
-
-		let z1 = this.a1 / other.a1;
-		if (DoubleDouble.isInfinite(z1)) {
-			return new DoubleDouble(z1, 0);
-		}
-
-		if (DoubleDouble.isInfinite(other.a1)) {
-			return new DoubleDouble(z1, 0);
-		}
-
-		let [z3, z4] = DoubleDouble.twoproduct(-z1, other.a1);
-		if (DoubleDouble.isInfinite(z3)) {
-			[z3, z4] = DoubleDouble.twoproduct(-z1, other.a1 * 0.5);
-			z2 =
-				(z3 + this.a1 * 0.5 - z1 * (other.a2 * 0.5) + this.a2 * 0.5 + z4) /
-				(other.a1 * 0.5);
-		} else {
-			z2 = (z3 + this.a1 - z1 * other.a2 + this.a2 + z4) / other.a1;
-		}
-
-		[z3, z4] = DoubleDouble.twosum(z1, z2);
-		if (DoubleDouble.isInfinite(z3)) {
-			return new DoubleDouble(z3, 0);
-		}
-
-		return new DoubleDouble(z3, z4);
-	}
-
-	public toString(): string {
-		let str = DoubleDouble.ddtostring(this.a1, this.a2, 34n, 'g', 0n);
-		return str.join('');
-	}
-
-	public formatToString(): string {
-		throw new Error();
-	}
-
 	public static ddtostring(
 		x1: number,
 		x2: number,
@@ -224,14 +27,13 @@ export class DoubleDouble {
 		format: string = 'g',
 		mode: bigint = 0n,
 	): string[] {
-		let i: bigint = 0n,
-			j: bigint = 0n;
-		let sign: bigint = 0n,
-			sign2: bigint = 0n,
-			ex1: bigint = 0n,
-			ex2: bigint = 0n;
-		let absx1: number = 0,
-			absx2: number = 0;
+		let i: bigint = 0n;
+		let sign: bigint = 0n;
+		let sign2: bigint = 0n;
+		let ex1: bigint = 0n;
+		let ex2: bigint = 0n;
+		let absx1: number = 0;
+		let absx2: number = 0;
 
 		if (x1 != x1 || x2 != x2) return ['nan'];
 
@@ -263,10 +65,10 @@ export class DoubleDouble {
 		let buf: bigint[] = new Array(1023 - -1074 + 2).fill(0n);
 
 		let offset = 1074n;
-		let emax: bigint = 0n,
-			emin: bigint = 0n;
-		let dtmp: number = 0,
-			dtmp2: number = 0;
+		let emax: bigint = 0n;
+		let emin: bigint = 0n;
+		let dtmp: number;
+		let dtmp2: number;
 
 		dtmp = absx1;
 		dtmp2 = DoubleDouble.ldexp(1, Number(ex1));
@@ -289,11 +91,11 @@ export class DoubleDouble {
 		// get x2 to buf2 and add it to buf
 
 		let buf2: bigint[] = new Array(1023 - -1074 + 1).fill(0n);
-		let emax2: bigint = 0n,
-			emin2: bigint = 0n,
-			s: bigint = 0n;
-		let carry: bigint = 0n,
-			tmp: bigint = 0n;
+		let emax2: bigint = 0n;
+		let emin2: bigint = 0n;
+		let s: bigint = 0n;
+		let carry: bigint = 0n;
+		let tmp: bigint = 0n;
 
 		sign2 = DoubleDouble.get_sign_double(x2);
 		absx2 = Math.abs(x2);
@@ -369,10 +171,10 @@ export class DoubleDouble {
 		let result1: Dequeue<bigint> = new Dequeue<bigint>();
 		let result2: Dequeue<bigint> = new Dequeue<bigint>();
 
-		let result_max: bigint = 0n,
-			result_min: bigint = 0n,
-			m: bigint = 0n,
-			pm: bigint = 0n;
+		let result_max: bigint;
+		let result_min: bigint;
+		let m: bigint = 0n;
+		let pm: bigint = 0n;
 
 		result_max = -1n;
 
@@ -610,5 +412,203 @@ export class DoubleDouble {
 		}
 
 		return result_str;
+	}
+
+	private static min(a: bigint, b: bigint): bigint {
+		if (a < b) return a;
+		else return b;
+	}
+
+	private static get_sign_double(x: number): bigint {
+		if (x == 0) {
+			x = 1 / x;
+		}
+
+		if (x > 0) return 1n;
+		else return -1n;
+	}
+
+	private static ldexp(mantissa: number, exponent: number): number {
+		return mantissa * Math.pow(2, exponent);
+	}
+
+	private static get_exponent(x: number): bigint {
+		// Perform boundary checks similar to the original C++ approach
+		if (x >= Math.pow(2, 1023)) return 1023n;
+		if (x < Math.pow(2, -1074)) return -1075n;
+
+		// Use absolute value for exponent calculation
+		const absX = Math.abs(x);
+
+		// Compute exponent using log2, then shift to match the behavior of std::frexp
+		const exponent = BigInt(Math.floor(Math.log2(absX)) + 1);
+		return exponent - 1n;
+	}
+
+	private static twosum(a: number, b: number): [number, number] {
+		let x = a + b;
+		let tmp;
+		let y;
+
+		if (Math.abs(a) > Math.abs(b)) {
+			tmp = x - a;
+			y = b - tmp;
+		} else {
+			tmp = x - b;
+			y = a - tmp;
+		}
+
+		return [x, y];
+	}
+
+	private static twoproduct(a: number, b: number): [number, number] {
+		const th = ldexp(1, 996);
+		const c1 = ldexp(1, -28);
+		const c2 = ldexp(1, 28);
+		const th2 = ldexp(1, 1023);
+
+		//		double na, nb, a1, a2, b1, b2;
+
+		let x = a * b;
+
+		if (!Number.isFinite(a)) {
+			return [x, 0];
+		}
+
+		let na = 0;
+		let nb = 0;
+
+		if (Math.abs(a) > th) {
+			na = a * c1;
+			nb = b * c2;
+		} else if (Math.abs(b) > th) {
+			na = a * c2;
+			nb = b * c1;
+		} else {
+			na = a;
+			nb = b;
+		}
+
+		let [a1, a2] = DoubleDouble.split(na);
+		let [b1, b2] = DoubleDouble.split(nb);
+
+		let y = 0;
+		if (Math.abs(x) > th2) {
+			y = (a1 * 0.5 * b1 - x * 0.5) * 2 + a2 * b1 + a1 * b2 + a2 * b2;
+		} else {
+			y = a1 * b1 - x + a2 * b1 + a1 * b2 + a2 * b2;
+		}
+
+		return [x, y];
+	}
+
+	private static split(a: number): [number, number] {
+		const sigma = (1 << 27) + 1;
+
+		let tmp = a * sigma;
+		let x = tmp - (tmp - a);
+		let y = a - x;
+
+		return [x, y];
+	}
+
+	private static isInfinite(value: number): boolean {
+		return Math.abs(value) == Infinity;
+	}
+
+	public add(other: DoubleDouble): DoubleDouble {
+		//double z1, z2, z3, z4;
+
+		let [z1, z2] = DoubleDouble.twosum(this.a1, other.a1);
+
+		if (DoubleDouble.isInfinite(z1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		z2 += this.a2 + other.a2;
+		let [z3, z4] = DoubleDouble.twosum(z1, z2);
+
+		if (DoubleDouble.isInfinite(z3)) {
+			return new DoubleDouble(z3, 0);
+		}
+
+		return new DoubleDouble(z3, z4);
+	}
+
+	public sub(other: DoubleDouble): DoubleDouble {
+		let [z1, z2] = DoubleDouble.twosum(this.a1, -other.a1);
+
+		if (DoubleDouble.isInfinite(z1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		z2 += this.a2 - other.a2;
+		let [z3, z4] = DoubleDouble.twosum(z1, z2);
+
+		if (DoubleDouble.isInfinite(z3)) {
+			return new DoubleDouble(z3, 0);
+		}
+
+		return new DoubleDouble(z3, z4);
+	}
+
+	public mul(other: DoubleDouble): DoubleDouble {
+		//double z1, z2, z3, z4;
+
+		let [z1, z2] = DoubleDouble.twoproduct(this.a1, other.a1);
+
+		if (DoubleDouble.isInfinite(z1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		// x.a2 * y.a2 is very small but sometimes important
+		z2 += this.a1 * other.a2 + this.a2 * other.a1;
+		z2 += this.a1 * other.a2 + this.a2 * other.a1 + this.a2 * other.a2;
+
+		let [z3, z4] = DoubleDouble.twosum(z1, z2);
+		if (DoubleDouble.isInfinite(z3)) {
+			return new DoubleDouble(z3, 0);
+		}
+
+		return new DoubleDouble(z3, z4);
+	}
+
+	public div(other: DoubleDouble): DoubleDouble {
+		let z2 = 0.0;
+
+		let z1 = this.a1 / other.a1;
+		if (DoubleDouble.isInfinite(z1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		if (DoubleDouble.isInfinite(other.a1)) {
+			return new DoubleDouble(z1, 0);
+		}
+
+		let [z3, z4] = DoubleDouble.twoproduct(-z1, other.a1);
+		if (DoubleDouble.isInfinite(z3)) {
+			[z3, z4] = DoubleDouble.twoproduct(-z1, other.a1 * 0.5);
+			z2 =
+				(z3 + this.a1 * 0.5 - z1 * (other.a2 * 0.5) + this.a2 * 0.5 + z4) /
+				(other.a1 * 0.5);
+		} else {
+			z2 = (z3 + this.a1 - z1 * other.a2 + this.a2 + z4) / other.a1;
+		}
+
+		[z3, z4] = DoubleDouble.twosum(z1, z2);
+		if (DoubleDouble.isInfinite(z3)) {
+			return new DoubleDouble(z3, 0);
+		}
+
+		return new DoubleDouble(z3, z4);
+	}
+
+	public toString(): string {
+		let str = DoubleDouble.ddtostring(this.a1, this.a2, 34n, 'g', 0n);
+		return str.join('');
+	}
+
+	public formatToString(): string {
+		throw new Error();
 	}
 }
