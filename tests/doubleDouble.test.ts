@@ -129,7 +129,7 @@ test('DoubleDouble Inf div', () => {
 
 test('DoubleDouble toString', () => {
 	const dd = new DoubleDouble(1.0, 2.0);
-	expect(dd.toString()).toBe('3.0');
+	expect(dd.toString()).toBe('3');
 });
 
 test('DoubleDouble toString with NaN', () => {

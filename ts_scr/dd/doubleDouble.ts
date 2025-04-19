@@ -50,13 +50,6 @@ export class DoubleDouble {
 		return exponent - 1n;
 	}
 
-	private static fasttwosum(a: number, b: number): [number, number] {
-		let x = a + b;
-		let tmp = x - a;
-		let y = b - tmp;
-		return [x, y];
-	}
-
 	private static twosum(a: number, b: number): [number, number] {
 		let x = a + b;
 		let tmp = 0;
@@ -204,7 +197,6 @@ export class DoubleDouble {
 				(z3 + this.a1 * 0.5 - z1 * (other.a2 * 0.5) + this.a2 * 0.5 + z4) /
 				(other.a1 * 0.5);
 		} else {
-			// z2 = ((((z3 + x.a1) - z1 * y.a2) + x.a2) + z4) / (y.a1 + y.a2);
 			z2 = (z3 + this.a1 - z1 * other.a2 + this.a2 + z4) / other.a1;
 		}
 
@@ -217,7 +209,8 @@ export class DoubleDouble {
 	}
 
 	public toString(): string {
-		throw new Error();
+		let str = DoubleDouble.ddtostring(this.a1, this.a2, 34n, 'g', 0n);
+		return str.join('');
 	}
 
 	public formatToString(): string {
