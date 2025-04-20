@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 import { ChronoAnchor } from '../ts_src/chrono/chronoAnchor.js';
 
 test('ChronoAnchor.fromProcessHrtmen', () => {
-	const anchor = ChronoAnchor.fromProcessHrtmen(123n, 456);
+	const anchor = ChronoAnchor.fromProcessHrtime(123n, 456);
 	expect(anchor.value).toBe(123n);
 	expect(anchor.id).toBe(456);
 });
@@ -28,9 +28,9 @@ test('ChronoAnchor.fromPerformanceNow with undefined id', () => {
 });
 
 test('ChronoAnchor.checkId', () => {
-	const anchor1 = ChronoAnchor.fromProcessHrtmen(123n, 456);
-	const anchor2 = ChronoAnchor.fromProcessHrtmen(789n, 456);
-	const anchor3 = ChronoAnchor.fromProcessHrtmen(789n, 999);
+	const anchor1 = ChronoAnchor.fromProcessHrtime(123n, 456);
+	const anchor2 = ChronoAnchor.fromProcessHrtime(789n, 456);
+	const anchor3 = ChronoAnchor.fromPerformanceNow(789, 999);
 	const anchor4 = ChronoAnchor.fromPerformanceNow(123.456, undefined);
 	const anchor5 = ChronoAnchor.fromPerformanceNow(123.456, undefined);
 

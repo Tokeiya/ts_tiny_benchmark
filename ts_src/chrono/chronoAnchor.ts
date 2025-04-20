@@ -7,7 +7,7 @@ export class ChronoAnchor {
 		this.id = id;
 	}
 
-	public static fromProcessHrtmen(
+	public static fromProcessHrtime(
 		nanoSecondsValue: bigint,
 		id: number,
 	): ChronoAnchor {
