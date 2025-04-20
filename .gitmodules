@@ -1,3 +1,0 @@
-[submodule "kv"]
-	path = kv
-	url = git@github.com:mskashi/kv.git
