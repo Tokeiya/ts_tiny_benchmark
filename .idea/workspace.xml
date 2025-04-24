@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
+    <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/timeSpan.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/timeSpan.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts_src/chrono/timeSpan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/chrono/timeSpan.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +119,7 @@
       <workItem from="1745222123495" duration="1195000" />
       <workItem from="1745398984022" duration="3000" />
       <workItem from="1745478920425" duration="1994000" />
+      <workItem from="1745482008299" duration="1732000" />
     </task>
     <task id="LOCAL-00001" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
       <option name="closed" value="true" />
@@ -129,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745150341818</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations.">
+      <option name="closed" value="true" />
+      <created>1745482039481</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745482039481</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations.">
+      <option name="closed" value="true" />
+      <created>1745482063359</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745482063359</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +169,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
+    <MESSAGE value="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations." />
   </component>
 </project>
