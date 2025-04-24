@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
-      <change afterPath="$PROJECT_DIR$/tests/timeSpan.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts_src/chrono/chronoMovement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts_src/chrono/chronograph.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts_src/chrono/timeSpan.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts_src/error/identityMismatch.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/timeSpan.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/timeSpan.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Tokeiya&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Tokeiya/ts_tiny_benchmark.git&quot;,
+    &quot;accountId&quot;: &quot;dc08de01-626e-4156-b03c-dfba17dd7cb9&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -37,28 +47,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Vitest.checkIdentity.executor": "Run",
-    "Vitest.chronoAnchor.test.ts.executor": "Run",
-    "git-widget-placeholder": "TSB-6",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "prettierjs.PrettierConfiguration.Package": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "ts.external.directory.path": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Vitest.checkIdentity.executor&quot;: &quot;Run&quot;,
+    &quot;Vitest.chronoAnchor.test.ts.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TSB-6&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;/mnt/wsl/repos/ts_tiny_benchmark/node_modules/stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/repo/ts_tiny_benchmark/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Vitest.chronoAnchor.test.ts">
     <configuration name="checkIdentity" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
@@ -107,6 +117,9 @@
       <workItem from="1745147560691" duration="397000" />
       <workItem from="1745148226748" duration="4753000" />
       <workItem from="1745152626484" duration="606000" />
+      <workItem from="1745222123495" duration="1195000" />
+      <workItem from="1745398984022" duration="3000" />
+      <workItem from="1745478920425" duration="1994000" />
     </task>
     <task id="LOCAL-00001" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
       <option name="closed" value="true" />
