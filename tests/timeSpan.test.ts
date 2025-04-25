@@ -30,7 +30,7 @@ test('TimeSpan totalNanoseconds', () => {
 test('TimeSpan totalMicroseconds', () => {
 	const timeSpan = new TimeSpan(1234_567_890n);
 	const result = timeSpan.totalMicroseconds;
-	console.log(result);
+	console.log(result.toString());
 	throw new Error('Not test evaluated')
 });
 

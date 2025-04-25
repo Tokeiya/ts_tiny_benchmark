@@ -1,0 +1,130 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c73090b1-eb5f-4044-aa18-52396bd8ec92\" name=\"Changes\" comment=\"Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.\">\n      <change afterPath=\"$PROJECT_DIR$/tests/timeSpan.test.ts\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/ts_src/chrono/chronoMovement.ts\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/ts_src/chrono/chronograph.ts\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/ts_src/chrono/timeSpan.ts\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/ts_src/error/identityMismatch.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"tsconfig.json\" />\n        <option value=\"TypeScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2vzUnFVO9HjTai7OiMAqPD2h3m5\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"Vitest.checkIdentity.executor\": \"Run\",\n    \"Vitest.chronoAnchor.test.ts.executor\": \"Run\",\n    \"git-widget-placeholder\": \"TSB-6\",\n    \"junie.onboarding.icon.badge.shown\": \"true\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.stylelint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.stylelint\": \"/mnt/wsl/repos/ts_tiny_benchmark/node_modules/stylelint\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"pnpm\",\n    \"prettierjs.PrettierConfiguration.Package\": \"/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier\",\n    \"settings.editor.selected.configurable\": \"advanced.settings\",\n    \"ts.external.directory.path\": \"/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RunManager\" selected=\"Vitest.chronoAnchor.test.ts\">\n    <configuration name=\"checkIdentity\" type=\"JavaScriptTestRunnerVitest\" temporary=\"true\" nameIsGenerated=\"true\">\n      <node-interpreter value=\"project\" />\n      <vitest-package value=\"$PROJECT_DIR$/node_modules/vitest\" />\n      <working-dir value=\"$PROJECT_DIR$\" />\n      <vitest-options value=\"--run\" />\n      <envs />\n      <scope-kind value=\"TEST\" />\n      <test-file value=\"$PROJECT_DIR$/tests/chronoAnchor.test.ts\" />\n      <test-names>\n        <test-name value=\"checkIdentity\" />\n      </test-names>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"chronoAnchor.test.ts\" type=\"JavaScriptTestRunnerVitest\" temporary=\"true\" nameIsGenerated=\"true\">\n      <node-interpreter value=\"project\" />\n      <vitest-package value=\"$PROJECT_DIR$/node_modules/vitest\" />\n      <working-dir value=\"$PROJECT_DIR$\" />\n      <vitest-options value=\"--run\" />\n      <envs />\n      <scope-kind value=\"TEST_FILE\" />\n      <test-file value=\"$PROJECT_DIR$/tests/chronoAnchor.test.ts\" />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Vitest.chronoAnchor.test.ts\" />\n        <item itemvalue=\"Vitest.checkIdentity\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c73090b1-eb5f-4044-aa18-52396bd8ec92\" name=\"Changes\" comment=\"\" />\n      <created>1744856277203</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1744856277203</updated>\n      <workItem from=\"1745147560691\" duration=\"397000\" />\n      <workItem from=\"1745148226748\" duration=\"4753000\" />\n      <workItem from=\"1745152626484\" duration=\"606000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745150341818</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745150341818</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n    <option name=\"exactExcludedFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/ts_src/dd/share.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/indexController.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/playground.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/dequeue.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/error/inconsistencyError.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/error/invalidOperationError.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/error/collectionChangedError.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/error/argumentError.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/dd/doubleDouble.js\" />\n        <option value=\"$PROJECT_DIR$/tests/doubleDouble.test.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/dd/format.js\" />\n        <option value=\"$PROJECT_DIR$/ts_src/dd/mode.js\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision fd145d2195a0fc3add20fe298da03079a9564576)
++++ b/.idea/workspace.xml	(date 1745576846505)
+@@ -5,11 +5,6 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
+-      <change afterPath="$PROJECT_DIR$/tests/timeSpan.test.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/ts_src/chrono/chronoMovement.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/ts_src/chrono/chronograph.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/ts_src/chrono/timeSpan.ts" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/ts_src/error/identityMismatch.ts" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -37,28 +32,49 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "Vitest.checkIdentity.executor": "Run",
+-    "Vitest.chronoAnchor.test.ts.executor": "Run",
+-    "git-widget-placeholder": "TSB-6",
+-    "junie.onboarding.icon.badge.shown": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.stylelint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.stylelint": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/stylelint",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "pnpm",
+-    "prettierjs.PrettierConfiguration.Package": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier",
+-    "settings.editor.selected.configurable": "advanced.settings",
+-    "ts.external.directory.path": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;Vitest.checkIdentity.executor&quot;: &quot;Run&quot;,
++    &quot;Vitest.chronoAnchor.test.ts.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;TSB-6&quot;,
++    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.stylelint&quot;: &quot;/mnt/wsl/repos/ts_tiny_benchmark/node_modules/stylelint&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
++    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
++    &quot;timeTracker.activityTracker&quot;: &quot;null&quot;,
++    &quot;timeTracker.comment&quot;: &quot;&quot;,
++    &quot;timeTracker.inactivityPeriodInMills&quot;: &quot;600000&quot;,
++    &quot;timeTracker.isAutoTrackingEnable&quot;: &quot;false&quot;,
++    &quot;timeTracker.isAutoTrackingTemporaryDisabled&quot;: &quot;false&quot;,
++    &quot;timeTracker.isManualTrackingEnable&quot;: &quot;false&quot;,
++    &quot;timeTracker.isPaused&quot;: &quot;true&quot;,
++    &quot;timeTracker.isPostAfterCommitEnabled&quot;: &quot;false&quot;,
++    &quot;timeTracker.isPostedScheduled&quot;: &quot;true&quot;,
++    &quot;timeTracker.isRunning&quot;: &quot;false&quot;,
++    &quot;timeTracker.isScheduledEnabled&quot;: &quot;false&quot;,
++    &quot;timeTracker.isWhenProjectClosedEnabled&quot;: &quot;false&quot;,
++    &quot;timeTracker.issueId&quot;: &quot;Default&quot;,
++    &quot;timeTracker.issueIdReadable&quot;: &quot;Default&quot;,
++    &quot;timeTracker.pausedTime&quot;: &quot;0&quot;,
++    &quot;timeTracker.query&quot;: &quot;&quot;,
++    &quot;timeTracker.recordedTime&quot;: &quot;0&quot;,
++    &quot;timeTracker.scheduledPeriod&quot;: &quot;19:00:0&quot;,
++    &quot;timeTracker.startTime&quot;: &quot;0&quot;,
++    &quot;timeTracker.timeInMills&quot;: &quot;0&quot;,
++    &quot;timeTracker.type&quot;: &quot;Development&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager" selected="Vitest.chronoAnchor.test.ts">
+     <configuration name="checkIdentity" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+       <node-interpreter value="project" />
+@@ -106,7 +122,11 @@
+       <updated>1744856277203</updated>
+       <workItem from="1745147560691" duration="397000" />
+       <workItem from="1745148226748" duration="4753000" />
+-      <workItem from="1745152626484" duration="606000" />
++      <workItem from="1745152626484" duration="716000" />
++      <workItem from="1745405301868" duration="32000" />
++      <workItem from="1745405349706" duration="10000" />
++      <workItem from="1745405484467" duration="67000" />
++      <workItem from="1745405557562" duration="647000" />
+     </task>
+     <task id="LOCAL-00001" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
+       <option name="closed" value="true" />
+@@ -116,8 +136,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1745150341818</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
+-    <servers />
++    <task id="LOCAL-00002" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
++      <option name="closed" value="true" />
++      <created>1745153194031</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1745153194031</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
++    <servers>
++      <YouTrack url="https://tokeiya3.youtrack.cloud">
++        <option name="defaultSearch" value="project: {ts_tiny_benchmark} State: Unresolved" />
++        <username>random</username>
++      </YouTrack>
++    </servers>
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />

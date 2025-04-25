@@ -3,17 +3,25 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Remove identity handling from ChronoAnchor class&#10;&#10;Eliminated the `identity` property and related logic from the `ChronoAnchor` class and test cases. This simplifies the implementation by focusing solely on the `anchor` attribute.">
+    <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/timeSpan.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/timeSpan.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts_src/chrono/chronoAnchor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/chrono/chronoAnchor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts_src/chrono/timeSpan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/chrono/timeSpan.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,18 +34,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Tokeiya&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:Tokeiya/ts_tiny_benchmark.git&quot;,
-    &quot;accountId&quot;: &quot;dc08de01-626e-4156-b03c-dfba17dd7cb9&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -50,16 +46,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "Vitest.TimeSpan constructor.executor": "Run",
-    "Vitest.TimeSpan create.executor": "Run",
-    "Vitest.TimeSpan totalPicoseconds.executor": "Run",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "Vitest.checkIdentity.executor": "Run",
     "Vitest.chronoAnchor.test.ts.executor": "Run",
-    "Vitest.timeSpan.test.ts.executor": "Run",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
     "git-widget-placeholder": "TSB-6",
     "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/mnt/wsl/repos/kv_survey",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,69 +66,22 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "pnpm",
     "prettierjs.PrettierConfiguration.Package": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "timeTracker.activityTracker": "null",
-    "timeTracker.comment": "",
-    "timeTracker.inactivityPeriodInMills": "600000",
-    "timeTracker.isAutoTrackingEnable": "false",
-    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
-    "timeTracker.isManualTrackingEnable": "false",
-    "timeTracker.isPaused": "true",
-    "timeTracker.isPostAfterCommitEnabled": "false",
-    "timeTracker.isPostedScheduled": "true",
-    "timeTracker.isRunning": "false",
-    "timeTracker.isScheduledEnabled": "false",
-    "timeTracker.isWhenProjectClosedEnabled": "false",
-    "timeTracker.issueId": "Default",
-    "timeTracker.issueIdReadable": "Default",
-    "timeTracker.pausedTime": "0",
-    "timeTracker.query": "",
-    "timeTracker.recordedTime": "0",
-    "timeTracker.scheduledPeriod": "19:00:0",
-    "timeTracker.startTime": "0",
-    "timeTracker.timeInMills": "0",
-    "timeTracker.type": "Development",
-    "ts.external.directory.path": "/repo/ts_tiny_benchmark/node_modules/typescript/lib",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "ts.external.directory.path": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Vitest.TimeSpan create">
-    <configuration name="TimeSpan constructor" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Vitest.chronoAnchor.test.ts">
+    <configuration name="checkIdentity" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$" />
       <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
+      <test-file value="$PROJECT_DIR$/tests/chronoAnchor.test.ts" />
       <test-names>
-        <test-name value="TimeSpan constructor" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="TimeSpan create" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
-      <test-names>
-        <test-name value="TimeSpan create" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="TimeSpan totalPicoseconds" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
-      <test-names>
-        <test-name value="TimeSpan totalPicoseconds" />
+        <test-name value="checkIdentity" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -144,23 +95,10 @@
       <test-file value="$PROJECT_DIR$/tests/chronoAnchor.test.ts" />
       <method v="2" />
     </configuration>
-    <configuration name="timeSpan.test.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Vitest.TimeSpan create" />
-        <item itemvalue="Vitest.TimeSpan constructor" />
-        <item itemvalue="Vitest.TimeSpan totalPicoseconds" />
         <item itemvalue="Vitest.chronoAnchor.test.ts" />
-        <item itemvalue="Vitest.timeSpan.test.ts" />
+        <item itemvalue="Vitest.checkIdentity" />
       </list>
     </recent_temporary>
   </component>
@@ -181,15 +119,7 @@
       <workItem from="1745147560691" duration="397000" />
       <workItem from="1745148226748" duration="4753000" />
       <workItem from="1745152626484" duration="606000" />
-      <workItem from="1745222123495" duration="1195000" />
-      <workItem from="1745398984022" duration="3000" />
-      <workItem from="1745478920425" duration="1994000" />
-      <workItem from="1745482008299" duration="1825000" />
-      <workItem from="1745487024192" duration="14000" />
-      <workItem from="1745551794006" duration="345000" />
-      <workItem from="1745552133462" duration="75000" />
-      <workItem from="1745552215093" duration="1754000" />
-      <workItem from="1745568211222" duration="1249000" />
+      <workItem from="1745577049817" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
       <option name="closed" value="true" />
@@ -199,44 +129,8 @@
       <option name="project" value="LOCAL" />
       <updated>1745150341818</updated>
     </task>
-    <task id="LOCAL-00002" summary="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations.">
-      <option name="closed" value="true" />
-      <created>1745482039481</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1745482039481</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations.">
-      <option name="closed" value="true" />
-      <created>1745482063359</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1745482063359</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Refactor TimeSpan API and update related tests&#10;&#10;Replaced method-based property access with getters for `TimeSpan`, improving API consistency. Updated corresponding test cases to reflect these changes and added constant factors for time conversions. Minor adjustments were made to IntelliJ configuration files.">
-      <option name="closed" value="true" />
-      <created>1745486952113</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745486952113</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Remove identity handling from ChronoAnchor class&#10;&#10;Eliminated the `identity` property and related logic from the `ChronoAnchor` class and test cases. This simplifies the implementation by focusing solely on the `anchor` attribute.">
-      <option name="closed" value="true" />
-      <created>1745568691211</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1745568691211</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
-    <servers>
-      <YouTrack url="https://tokeiya3.youtrack.cloud">
-        <username>random</username>
-      </YouTrack>
-    </servers>
+    <option name="localTasksCounter" value="2" />
+    <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -259,9 +153,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
-    <MESSAGE value="Update test cases and dependencies, adjust IntelliJ configs&#10;&#10;Replaced `fail()` with `throw new Error('Not implemented')` in unit tests for `TimeSpan`. Updated dependencies in `package.json` with minor version bumps and updated the `pnpm-lock.yaml` accordingly. Modified IntelliJ IDEA settings files to reflect recent changes and configurations." />
-    <MESSAGE value="Refactor TimeSpan API and update related tests&#10;&#10;Replaced method-based property access with getters for `TimeSpan`, improving API consistency. Updated corresponding test cases to reflect these changes and added constant factors for time conversions. Minor adjustments were made to IntelliJ configuration files." />
-    <MESSAGE value="Remove identity handling from ChronoAnchor class&#10;&#10;Eliminated the `identity` property and related logic from the `ChronoAnchor` class and test cases. This simplifies the implementation by focusing solely on the `anchor` attribute." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove identity handling from ChronoAnchor class&#10;&#10;Eliminated the `identity` property and related logic from the `ChronoAnchor` class and test cases. This simplifies the implementation by focusing solely on the `anchor` attribute." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
   </component>
 </project>
