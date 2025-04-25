@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
 import { DoubleDouble } from '../ts_src/dd/doubleDouble.js';
+import { ParseError } from '../ts_src/error/parseError';
 
 test('DoubleDouble constructor', () => {
 	const dd = new DoubleDouble(1.0, 2.0);
@@ -201,4 +202,38 @@ test('DoubleDouble toString with very large values', () => {
 	expect(DoubleDouble.doubleDoubleToString(1.0e15, 0).join('')).toBe(
 		'1000000000000000',
 	);
+});
+
+
+test('get_sign', () => {
+	let str="+1020";
+	let act=DoubleDouble.get_sign(str)
+	expect(act[0]).toBe(1);
+	expect(act[1]).toBe("1020");
+
+	str="-1020";
+	act=DoubleDouble.get_sign(str)
+	expect(act[0]).toBe(-1);
+	expect(act[1]).toBe("1020");
+
+	str="1020";
+	act=DoubleDouble.get_sign(str)
+	expect(act[0]).toBe(1);
+	expect(act[1]).toBe("1020");
+
+	expect(()=>DoubleDouble.get_sign("")).toThrow(ParseError)
+	});
+
+test('get_number', () => {
+	let str="1020";
+	let act=DoubleDouble.get_number(str)
+	expect(act[0]).toBe('1020');
+	expect(act[1]).toBe('');
+
+	str="1020.123";
+	act=DoubleDouble.get_number(str)
+	expect(act[0]).toBe('1020');
+	expect(act[1]).toBe('.123');
+
+
 });

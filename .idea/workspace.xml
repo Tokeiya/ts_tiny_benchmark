@@ -9,11 +9,14 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
+    <list default="true" id="332538a5-a8fd-47cc-a7fa-faaab173c439" name="TSB-17 implements string parser to DoubeDouble" comment="">
+      <change afterPath="$PROJECT_DIR$/ts_src/error/parseError.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/doubleDouble.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/doubleDouble.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts_src/dd/doubleDouble.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/dd/doubleDouble.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts_src/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/playground.ts" afterDir="false" />
+    </list>
+    <list id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/timeSpan.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/timeSpan.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +35,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="TSB-6" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -46,6 +54,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.playground.ts.executor": "Run",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -53,9 +62,10 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "Vitest.checkIdentity.executor": "Run",
     "Vitest.chronoAnchor.test.ts.executor": "Run",
+    "Vitest.get_sign.executor": "Run",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "TSB-6",
+    "git-widget-placeholder": "TSB-17",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/mnt/wsl/repos/kv_survey",
     "node.js.detected.package.eslint": "true",
@@ -67,38 +77,97 @@
     "nodejs_package_manager_path": "pnpm",
     "prettierjs.PrettierConfiguration.Package": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier",
     "settings.editor.selected.configurable": "advanced.settings",
+    "tasks.open.task.update.state.enabled": "true",
+    "timeTracker.activityTracker": "null",
+    "timeTracker.comment": "",
+    "timeTracker.inactivityPeriodInMills": "600000",
+    "timeTracker.isAutoTrackingEnable": "false",
+    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
+    "timeTracker.isManualTrackingEnable": "false",
+    "timeTracker.isPaused": "true",
+    "timeTracker.isPostAfterCommitEnabled": "false",
+    "timeTracker.isPostedScheduled": "true",
+    "timeTracker.isRunning": "false",
+    "timeTracker.isScheduledEnabled": "false",
+    "timeTracker.isWhenProjectClosedEnabled": "false",
+    "timeTracker.issueId": "Default",
+    "timeTracker.issueIdReadable": "Default",
+    "timeTracker.pausedTime": "0",
+    "timeTracker.query": "",
+    "timeTracker.recordedTime": "0",
+    "timeTracker.scheduledPeriod": "19:00:0",
+    "timeTracker.startTime": "0",
+    "timeTracker.timeInMills": "0",
+    "timeTracker.type": "Development",
     "ts.external.directory.path": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Vitest.chronoAnchor.test.ts">
-    <configuration name="checkIdentity" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ts_src/error" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Vitest.get_sign">
+    <configuration name="TimeSpan totalMicroseconds" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$" />
       <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/chronoAnchor.test.ts" />
+      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
       <test-names>
-        <test-name value="checkIdentity" />
+        <test-name value="TimeSpan totalMicroseconds" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="chronoAnchor.test.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="TimeSpan totalNanoseconds" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <vitest-options value="--run" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
+      <test-names>
+        <test-name value="TimeSpan totalNanoseconds" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="get_sign" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <vitest-options value="--run" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/doubleDouble.test.ts" />
+      <test-names>
+        <test-name value="get_sign" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="timeSpan.test.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$" />
       <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/tests/chronoAnchor.test.ts" />
+      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="playground.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/ts_src/playground.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$/ts_src">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Vitest.chronoAnchor.test.ts" />
-        <item itemvalue="Vitest.checkIdentity" />
+        <item itemvalue="Vitest.get_sign" />
+        <item itemvalue="Node.js.playground.ts" />
+        <item itemvalue="Vitest.TimeSpan totalMicroseconds" />
+        <item itemvalue="Vitest.TimeSpan totalNanoseconds" />
+        <item itemvalue="Vitest.timeSpan.test.ts" />
       </list>
     </recent_temporary>
   </component>
@@ -110,16 +179,18 @@
     </attachedChunks>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
+    <task id="Default" summary="Default task">
+      <branch name="TSB-6" repository="$PROJECT_DIR$" />
       <changelist id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="" />
       <created>1744856277203</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1744856277203</updated>
+      <updated>1745577732493</updated>
       <workItem from="1745147560691" duration="397000" />
       <workItem from="1745148226748" duration="4753000" />
       <workItem from="1745152626484" duration="606000" />
       <workItem from="1745577049817" duration="22000" />
+      <workItem from="1745577671296" duration="61000" />
     </task>
     <task id="LOCAL-00001" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
       <option name="closed" value="true" />
@@ -129,8 +200,41 @@
       <option name="project" value="LOCAL" />
       <updated>1745150341818</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
-    <servers />
+    <task id="LOCAL-00002" summary="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development.">
+      <option name="closed" value="true" />
+      <created>1745577455687</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745577455687</updated>
+    </task>
+    <task active="true" id="TSB-17" summary="implements string parser to DoubeDouble">
+      <branch name="TSB-6" repository="$PROJECT_DIR$" original="true" />
+      <branch name="TSB-17" repository="$PROJECT_DIR$" />
+      <changelist id="332538a5-a8fd-47cc-a7fa-faaab173c439" name="TSB-17 implements string parser to DoubeDouble" comment="" />
+      <created>1745577439687</created>
+      <option name="issue" value="true" />
+      <url>https://tokeiya3.youtrack.cloud/issue/TSB-17</url>
+      <option name="number" value="17" />
+      <option name="presentableId" value="TSB-17" />
+      <option name="project" value="TSB" />
+      <updated>1745577732493</updated>
+      <workItem from="1745577732508" duration="2512000" />
+      <workItem from="1745585523918" duration="156000" />
+      <workItem from="1745585688051" duration="977000" />
+      <workItem from="1745586764698" duration="1038000" />
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <option name="clearContext" value="false" />
+    <servers>
+      <YouTrack url="https://tokeiya3.youtrack.cloud">
+        <option name="defaultSearch" value="project: {ts_tiny_benchmark} State: Unresolved" />
+        <option name="preferredOpenTaskState">
+          <CustomTaskState id="Develop" name="Develop" />
+        </option>
+        <username>random</username>
+      </YouTrack>
+    </servers>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -153,6 +257,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
+    <MESSAGE value="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
   </component>
 </project>
