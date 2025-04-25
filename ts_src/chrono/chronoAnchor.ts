@@ -1,6 +1,7 @@
 export class ChronoAnchor{
 	public readonly anchor:bigint
 
+	//anchor unit is nano seconds.
 	private constructor(anchor:bigint) {
 		this.anchor = anchor
 	}
