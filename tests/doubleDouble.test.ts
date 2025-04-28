@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { DoubleDouble } from '../ts_src/dd/doubleDouble.js';
-import { ParseError } from '../ts_src/error/parseError';
+import { ParseError } from '../ts_src/error/parseError.js';
 
 test('DoubleDouble constructor', () => {
 	const dd = new DoubleDouble(1.0, 2.0);
@@ -203,6 +203,12 @@ test('DoubleDouble toString with very large values', () => {
 		'1000000000000000',
 	);
 });
+
+
+test('foo',()=>{
+	let act=DoubleDouble.get_sign("12");
+	console.log(act)
+})
 
 
 test('get_sign', () => {
