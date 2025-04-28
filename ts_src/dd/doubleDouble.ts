@@ -627,51 +627,68 @@ export class DoubleDouble {
 		throw new Error('Not implemented')
 	}
 
-	public static get_sign(input:string):[bigint,string]{
-		if(input.length==0)
-		{
+	public static get_sign(input:string):[bigint,string] {
+		if (input.length == 0) {
 			throw new ParseError('""')
 		}
 
-
-
+		if (input.startsWith('-')) {
+			return [-1n, input.slice(1)]
+		} else if (input.startsWith('+')) {
+			return [1n, input.slice(1)]
+		} else {
+			return [1n, input]
+		}
 	}
 
-	public static get_number(input:string):[string,string]{
-		throw new Error('Not implemented')
+	public static get_number(input:string):[string|undefined,string]{
+		const regexp=/^\d+/
+		let result=input.match(regexp);
+
+		if(result === null){
+			return [undefined,input]
+		}else{
+			return [result[0],input.slice(result[0].length)]
+		}
 	}
 
-// 	public static stringtodd(s:string,  mode:bigint = 0n,  fast:boolean = false):[x1:number,x2:number] {
-// 		let i:bigint=0n;
-// 		let tmp:bigint=0n;
-//
-// 		let flag:boolean=false;
-//
-// 		let sign:bigint=0n;
-// 		let e10:bigint=0n;
-// 		let esign:bigint=0n;
-//
-// 		let num1_s:string, num2_s:string, nume_s:string;
-//
-// 		//Unmannerd :)
-// 		s=s.trim();
-//
-// 	sign = get_sign(s);
-// 	num1_s = get_number(s);
-//
-// 	if (0 < s.size() && s[0] == '.') {
-// 	s = s.substr(1);
-// 	num2_s = get_number(s);
-// }
-//
-// if (0 < s.size() && (s[0] == 'e' || s[0] == 'E')) {
-// 	s = s.substr(1);
-// 	esign = get_sign(s);
-// 	nume_s = get_number(s);
-// 	e10 = esign * atoi(nume_s.c_str());
-// } else {
-// 	e10 = 0;
-// }
+
+
+	public static stringtodd(s:string,  mode:bigint = 0n,  fast:boolean = false):[x1:number,x2:number] {
+		let i:bigint=0n;
+		let tmp:bigint=0n;
+
+		let flag:boolean=false;
+
+		let sign:bigint=0n;
+		let e10:bigint=0n;
+		let esign:bigint=0n;
+
+		let num1_s:string|undefined, num2_s:string|undefined, nume_s:string|undefined;
+
+		//Unmannerd :)
+		s=s.trim();
+
+	[sign,s] = DoubleDouble.get_sign(s);
+	[num1_s,s] = DoubleDouble.get_number(s);
+
+
+	if (0 < s.length && s[0] == '.') {
+	s = s.substring(1);
+	[num2_s,s] = DoubleDouble.get_number(s);
+}
+
+if (0 < s.length() && (s[0] == 'e' || s[0] == 'E')) {
+	s = s.substring(1);
+	[esign,s] = DoubleDouble.get_sign(s);
+	[nume_s,s] = DoubleDouble.get_number(s);
+	//e10 = esign * atoi(nume_s.c_str());
+	let foo=parseInt(nume_s??"");
+
+	e10=esign*bigint(parseInt(num_s));
+} else {
+	e10 = 0;
+}
 //
 // // delete 0s from the head of num1_s
 // while (0 < num1_s.size() && num1_s[0] == '0') {
@@ -943,5 +960,5 @@ export class DoubleDouble {
 // x1 = sign * r;
 // x2 = sign * r2;
 // return;
-// }
+}
 }

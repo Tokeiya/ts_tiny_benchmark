@@ -10,14 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="332538a5-a8fd-47cc-a7fa-faaab173c439" name="TSB-17 implements string parser to DoubeDouble" comment="">
-      <change afterPath="$PROJECT_DIR$/ts_src/error/parseError.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/doubleDouble.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/doubleDouble.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ts_src/dd/doubleDouble.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/dd/doubleDouble.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ts_src/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/playground.ts" afterDir="false" />
     </list>
-    <list id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +60,8 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "Vitest.checkIdentity.executor": "Run",
     "Vitest.chronoAnchor.test.ts.executor": "Run",
-    "Vitest.get_sign.executor": "Run",
+    "Vitest.get_number.executor": "Run",
+    "Vitest.get_sign.executor": "Coverage",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "TSB-17",
@@ -108,7 +107,7 @@
       <recent name="$PROJECT_DIR$/ts_src/error" />
     </key>
   </component>
-  <component name="RunManager" selected="Vitest.get_sign">
+  <component name="RunManager" selected="Node.js.playground.ts">
     <configuration name="TimeSpan totalMicroseconds" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
@@ -135,6 +134,19 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="get_number" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <vitest-options value="--run" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/doubleDouble.test.ts" />
+      <test-names>
+        <test-name value="get_number" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="get_sign" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
@@ -148,26 +160,16 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="timeSpan.test.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
-      <method v="2" />
-    </configuration>
     <configuration name="playground.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/ts_src/playground.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$/ts_src">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Vitest.get_sign" />
         <item itemvalue="Node.js.playground.ts" />
+        <item itemvalue="Vitest.get_number" />
+        <item itemvalue="Vitest.get_sign" />
         <item itemvalue="Vitest.TimeSpan totalMicroseconds" />
         <item itemvalue="Vitest.TimeSpan totalNanoseconds" />
-        <item itemvalue="Vitest.timeSpan.test.ts" />
       </list>
     </recent_temporary>
   </component>
@@ -223,6 +225,9 @@
       <workItem from="1745585523918" duration="156000" />
       <workItem from="1745585688051" duration="977000" />
       <workItem from="1745586764698" duration="1038000" />
+      <workItem from="1745664627479" duration="2770000" />
+      <workItem from="1745669992568" duration="1652000" />
+      <workItem from="1745752019174" duration="4248000" />
     </task>
     <option name="localTasksCounter" value="3" />
     <option name="clearContext" value="false" />
@@ -259,5 +264,8 @@
     <MESSAGE value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
     <MESSAGE value="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
     <option name="LAST_COMMIT_MESSAGE" value="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ts_tiny_benchmark$get_sign.info" NAME="get_sign Coverage Results" MODIFIED="1745670700123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -208,17 +208,17 @@ test('DoubleDouble toString with very large values', () => {
 test('get_sign', () => {
 	let str="+1020";
 	let act=DoubleDouble.get_sign(str)
-	expect(act[0]).toBe(1);
+	expect(act[0]).toBe(1n);
 	expect(act[1]).toBe("1020");
 
 	str="-1020";
 	act=DoubleDouble.get_sign(str)
-	expect(act[0]).toBe(-1);
+	expect(act[0]).toBe(-1n);
 	expect(act[1]).toBe("1020");
 
 	str="1020";
 	act=DoubleDouble.get_sign(str)
-	expect(act[0]).toBe(1);
+	expect(act[0]).toBe(1n);
 	expect(act[1]).toBe("1020");
 
 	expect(()=>DoubleDouble.get_sign("")).toThrow(ParseError)
@@ -235,5 +235,7 @@ test('get_number', () => {
 	expect(act[0]).toBe('1020');
 	expect(act[1]).toBe('.123');
 
-
+	act=DoubleDouble.get_number("a1020.123");
+	expect(act[0]).toBe(undefined);
+	expect(act[1]).toBe('a1020.123');
 });
