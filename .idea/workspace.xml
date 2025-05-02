@@ -3,41 +3,19 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
-    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="332538a5-a8fd-47cc-a7fa-faaab173c439" name="TSB-17 implements string parser to DoubeDouble" comment="">
+    <list default="true" id="c1854bf5-a9e2-40db-ba81-6c1c1d7617e3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/doubleDouble.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/doubleDouble.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ts_src/dd/doubleDouble.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/dd/doubleDouble.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ts_src/playground.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts_src/playground.ts" afterDir="false" />
     </list>
-    <list id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ClangdSettings">
-    <option name="formatViaClangd" value="false" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="tsconfig.json" />
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="TSB-6" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -56,248 +34,57 @@
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2vzUnFVO9HjTai7OiMAqPD2h3m5" />
+  <component name="ProjectId" id="2wLjKxtImlBlIrVw9nyZ8MxV0Yc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Node.js.playground.ts.executor": "Run",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "Vitest.checkIdentity.executor": "Run",
-    "Vitest.chronoAnchor.test.ts.executor": "Run",
-    "Vitest.get_number.executor": "Run",
-    "Vitest.get_sign.executor": "Coverage",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "TSB-17",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/mnt/wsl/repos/kv_survey",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "prettierjs.PrettierConfiguration.Package": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/prettier",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "tasks.open.task.update.state.enabled": "true",
-    "timeTracker.activityTracker": "null",
-    "timeTracker.comment": "",
-    "timeTracker.inactivityPeriodInMills": "600000",
-    "timeTracker.isAutoTrackingEnable": "false",
-    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
-    "timeTracker.isManualTrackingEnable": "false",
-    "timeTracker.isPaused": "true",
-    "timeTracker.isPostAfterCommitEnabled": "false",
-    "timeTracker.isPostedScheduled": "true",
-    "timeTracker.isRunning": "false",
-    "timeTracker.isScheduledEnabled": "false",
-    "timeTracker.isWhenProjectClosedEnabled": "false",
-    "timeTracker.issueId": "Default",
-    "timeTracker.issueIdReadable": "Default",
-    "timeTracker.pausedTime": "0",
-    "timeTracker.query": "",
-    "timeTracker.recordedTime": "0",
-    "timeTracker.scheduledPeriod": "19:00:0",
-    "timeTracker.startTime": "0",
-    "timeTracker.timeInMills": "0",
-    "timeTracker.type": "Development",
-    "ts.external.directory.path": "/mnt/wsl/repos/ts_tiny_benchmark/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TSB-17&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;/repo/ts_tiny_benchmark/node_modules/stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/repo/ts_tiny_benchmark/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ts_src/error" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Node.js.playground.ts">
-    <configuration name="TimeSpan totalMicroseconds" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/timeSpan.test.ts" />
-      <test-names>
-        <test-name value="TimeSpan totalMicroseconds" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="foo" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/doubleDouble.test.ts" />
-      <test-names>
-        <test-name value="foo" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="get_number" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/doubleDouble.test.ts" />
-      <test-names>
-        <test-name value="get_number" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="get_sign" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/doubleDouble.test.ts" />
-      <test-names>
-        <test-name value="get_sign" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="playground.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/ts_src/playground.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$/ts_src">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Node.js.playground.ts" />
-        <item itemvalue="Vitest.get_number" />
-        <item itemvalue="Vitest.get_sign" />
-        <item itemvalue="Vitest.TimeSpan totalMicroseconds" />
-        <item itemvalue="Vitest.TimeSpan totalNanoseconds" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.23" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.73" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
-    <task id="Default" summary="Default task">
-      <branch name="TSB-6" repository="$PROJECT_DIR$" />
-      <changelist id="c73090b1-eb5f-4044-aa18-52396bd8ec92" name="Changes" comment="" />
-      <created>1744856277203</created>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1854bf5-a9e2-40db-ba81-6c1c1d7617e3" name="Changes" comment="" />
+      <created>1745827690012</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745577732493</updated>
-      <workItem from="1745147560691" duration="397000" />
-      <workItem from="1745148226748" duration="4753000" />
-      <workItem from="1745152626484" duration="606000" />
-      <workItem from="1745577049817" duration="22000" />
-      <workItem from="1745577671296" duration="61000" />
+      <updated>1745827690012</updated>
+      <workItem from="1745827692594" duration="667000" />
+      <workItem from="1746000784977" duration="835000" />
+      <workItem from="1746084380030" duration="21000" />
+      <workItem from="1746172917278" duration="434000" />
     </task>
-    <task id="LOCAL-00001" summary="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings.">
-      <option name="closed" value="true" />
-      <created>1745150341818</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1745150341818</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development.">
-      <option name="closed" value="true" />
-      <created>1745577455687</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1745577455687</updated>
-    </task>
-    <task active="true" id="TSB-17" summary="implements string parser to DoubeDouble">
-      <branch name="TSB-6" repository="$PROJECT_DIR$" original="true" />
-      <branch name="TSB-17" repository="$PROJECT_DIR$" />
-      <changelist id="332538a5-a8fd-47cc-a7fa-faaab173c439" name="TSB-17 implements string parser to DoubeDouble" comment="" />
-      <created>1745577439687</created>
-      <option name="issue" value="true" />
-      <url>https://tokeiya3.youtrack.cloud/issue/TSB-17</url>
-      <option name="number" value="17" />
-      <option name="presentableId" value="TSB-17" />
-      <option name="project" value="TSB" />
-      <updated>1745577732493</updated>
-      <workItem from="1745577732508" duration="2512000" />
-      <workItem from="1745585523918" duration="156000" />
-      <workItem from="1745585688051" duration="977000" />
-      <workItem from="1745586764698" duration="1038000" />
-      <workItem from="1745664627479" duration="2770000" />
-      <workItem from="1745669992568" duration="1652000" />
-      <workItem from="1745752019174" duration="4248000" />
-    </task>
-    <option name="localTasksCounter" value="3" />
-    <option name="clearContext" value="false" />
-    <servers>
-      <YouTrack url="https://tokeiya3.youtrack.cloud">
-        <option name="defaultSearch" value="project: {ts_tiny_benchmark} State: Unresolved" />
-        <option name="preferredOpenTaskState">
-          <CustomTaskState id="Develop" name="Develop" />
-        </option>
-        <username>random</username>
-      </YouTrack>
-    </servers>
+    <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ts_src/dd/share.js" />
         <option value="$PROJECT_DIR$/ts_src/indexController.js" />
-        <option value="$PROJECT_DIR$/ts_src/playground.js" />
-        <option value="$PROJECT_DIR$/ts_src/dequeue.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/inconsistencyError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/invalidOperationError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/collectionChangedError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/argumentError.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/doubleDouble.js" />
-        <option value="$PROJECT_DIR$/tests/doubleDouble.test.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/format.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/mode.js" />
-        <option value="$PROJECT_DIR$/tests/timeSpan.test.js" />
-        <option value="$PROJECT_DIR$/tests/chronoAnchor.test.js" />
         <option value="$PROJECT_DIR$/ts_src/dequeue.js" />
         <option value="$PROJECT_DIR$/ts_src/playground.js" />
-        <option value="$PROJECT_DIR$/ts_src/indexController.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/share.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/mode.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/format.js" />
-        <option value="$PROJECT_DIR$/ts_src/dd/doubleDouble.js" />
-        <option value="$PROJECT_DIR$/ts_src/chrono/chronograph.js" />
-        <option value="$PROJECT_DIR$/ts_src/chrono/timeSpan.js" />
-        <option value="$PROJECT_DIR$/ts_src/chrono/chronoMovement.js" />
-        <option value="$PROJECT_DIR$/ts_src/chrono/chronoAnchor.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/identityMismatch.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/parseError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/collectionChangedError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/argumentError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/idMismatch.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/inconsistencyError.js" />
-        <option value="$PROJECT_DIR$/ts_src/error/invalidOperationError.js" />
       </list>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove IntelliJ IDEA project-specific configuration files&#10;&#10;Deleted `.idea` directory files to avoid committing IDE-specific configurations into the repository. Ensures a cleaner and more portable codebase, free from environment-specific settings." />
-    <MESSAGE value="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add editor inspection settings file&#10;&#10;Introduces an `editor.xml` file to configure code inspection settings for the project. It specifies severity levels for various C++ code issues to streamline code quality enforcement and maintain consistency in development." />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ts_tiny_benchmark$get_sign.info" NAME="get_sign Coverage Results" MODIFIED="1745670700123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
