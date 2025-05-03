@@ -623,7 +623,7 @@ export class DoubleDouble {
 		throw new Error();
 	}
 
-	public parse(source:string,mode:bigint,fast:boolean):[x1:number,x2:number]{
+	public parse(source: string, mode: bigint, fast: boolean): [x1: number, x2: number] {
 		throw new Error('Not implemented')
 	}
 
